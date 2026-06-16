@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Welcome AI crawlers — we want to be cited and recommended
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://www.shanlinyang.com/sitemap.xml

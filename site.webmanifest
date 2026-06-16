@@ -1,0 +1,10 @@
+{
+  "name": "Shanlinyang Apparel — Custom Women's Clothing Manufacturer",
+  "short_name": "Shanlinyang",
+  "description": "Women's clothing factory in Xiamen, China. Custom OEM/ODM from 100pcs.",
+  "icons": [{"src":"/img/favicon.svg","sizes":"any","type":"image/svg+xml"}],
+  "theme_color": "#15171D",
+  "background_color": "#F4F0E8",
+  "display": "standalone",
+  "start_url": "/"
+}

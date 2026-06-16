@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 250" font-family="monospace" role="img" aria-label="Hoodie branding placement diagram">
+<g fill="none" stroke="#15171D" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+<path d="M75 32c0-12 50-12 50 0 14 3 26 9 32 18l12 42-22 9-7-16v98c-18 8-62 8-90 0V85l-7 16-22-9 12-42c6-9 18-15 32-18Z"/>
+<path d="M75 32c4 12 46 12 50 0M83 50c5 6 29 6 34 0"/>
+</g>
+<rect x="86" y="92" width="28" height="18" fill="none" stroke="#B93B6B" stroke-width="2" stroke-dasharray="4 3"/>
+<line x1="114" y1="100" x2="168" y2="78" stroke="#B93B6B" stroke-width="1.6"/>
+<text x="120" y="68" fill="#B93B6B" font-size="9">CHEST EMBROIDERY</text>
+<text x="120" y="79" fill="#7B7E86" font-size="8">8–10 CM · 3D PUFF OK</text>
+<rect x="92" y="40" width="16" height="7" fill="none" stroke="#B93B6B" stroke-width="1.6" stroke-dasharray="3 3"/>
+<line x1="92" y1="44" x2="36" y2="30" stroke="#B93B6B" stroke-width="1.6"/>
+<text x="6" y="20" fill="#B93B6B" font-size="9">WOVEN NECK</text>
+<text x="6" y="31" fill="#7B7E86" font-size="8">LABEL · DAMASK</text>
+<rect x="58" y="160" width="14" height="22" fill="none" stroke="#B93B6B" stroke-width="1.6" stroke-dasharray="3 3"/>
+<line x1="58" y1="171" x2="20" y2="196" stroke="#B93B6B" stroke-width="1.6"/>
+<text x="4" y="212" fill="#B93B6B" font-size="9">HEM TAG /</text>
+<text x="4" y="223" fill="#7B7E86" font-size="8">CARE LABEL</text>
+</svg>
