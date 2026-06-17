@@ -17,13 +17,60 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,600;1,500&family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,600;1,500&family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,600;1,500&family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
+<noscript></noscript>
 <link rel="icon" type="image/png" href="/img/apple-touch-icon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" as="image" href="/img/hero-models.png" fetchpriority="high">
+<link rel="preload" as="image" href="/img/hero-models.webp" fetchpriority="high">
 <meta name="theme-color" content="#15171D">
-<link rel="stylesheet" href="/css/style.css">
+<style>
+:root{
+  --paper:#F4F0E8;
+  --paper-deep:#E9E2D4;
+  --ink:#15171D;
+  --ink-soft:#494C55;
+  --thread:#B93B6B;
+  --thread-deep:#932C54;
+  --mauve:#EBD9E1;
+  --line:#D8D1C2;
+  --line-dark:#2C2F38;
+  --mono-grey:#7B7E86;
+  --white:#FFFFFF;
+  --radius:2px;
+  --maxw:1180px;
+  --font-display:"Bodoni Moda",Didot,serif;
+  --font-ui:"Archivo",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);color:var(--ink);background:var(--paper);line-height:1.7;font-size:16.5px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+h1,h2{font-family:var(--font-display);font-weight:600;line-height:1.06;letter-spacing:-.01em}
+h1{font-size:clamp(2.4rem,5.4vw,4.2rem)}
+header.site{background:rgba(244,240,232,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1.4rem;padding:.8rem 0;flex-wrap:wrap}
+.brand{display:flex;align-items:center}
+nav.main ul{list-style:none;display:flex;gap:1.5rem;flex-wrap:wrap}
+nav.main a{color:var(--ink);font-family:var(--font-ui);font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase}
+nav.main li{position:relative}
+.heroLite{background:linear-gradient(180deg,#F7F3EC 0%,#F2ECE1 78%,#EFE8DB 100%);position:relative;overflow:hidden;padding:2rem 0 0}
+.heroLite .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:2.4rem;align-items:center;position:relative;z-index:2}
+.heroLite .copy{padding-bottom:1.2rem}
+.heroLite .eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--thread);display:block;margin-bottom:1.1rem}
+.heroLite h1{font-family:var(--font-display);font-size:clamp(2.4rem,4.6vw,3.9rem);line-height:1.04;color:var(--ink);font-weight:600;letter-spacing:-.01em}
+.heroLite h1 em{display:block;font-style:italic;color:var(--thread);font-weight:500;margin-top:.05em}
+.heroLite .sub{font-size:1.02rem;color:var(--ink-soft);max-width:46ch;margin:1rem 0 1.3rem}
+.hl-stage{position:relative;min-height:470px;align-self:stretch;display:flex}
+.hl-models{position:absolute;left:4%;bottom:0;top:0;z-index:2;display:flex;align-items:flex-end}
+.hl-models img{height:100%;width:auto;max-width:none;display:block;filter:drop-shadow(0 20px 32px rgba(60,40,30,.15))}
+@media(max-width:980px){.heroLite .wrap{grid-template-columns:1fr;gap:1rem}.hl-stage{min-height:480px;margin-top:.5rem}}
+@media(max-width:560px){.hl-stage{min-height:400px}.hl-models{left:0}}
+</style>
+<link rel="preload" href="/css/style.css" as="style" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/style.css"></noscript>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -179,7 +226,6 @@
   </div>
 </header>
 <main id="main">
-
 <section class="heroLite">
   <div class="wrap">
     <div class="copy">
@@ -219,23 +265,20 @@
   </div>
 </section>
 <div class="ticker" aria-hidden="true"><span>LOW MOQ 100 PCS / COLOR / STYLE SAMPLES IN 72 DAYS 961+ LIVE STYLES US &amp; EU SIZING XSXL YOUR LOGO · YOUR LABELS · YOUR BRAND DDP TO US &amp; EU FACTORY DIRECT FROM XIAMEN LOW MOQ 100 PCS / COLOR / STYLE SAMPLES IN 72 DAYS 961+ LIVE STYLES US &amp; EU SIZING XSXL YOUR LOGO · YOUR LABELS · YOUR BRAND DDP TO US &amp; EU FACTORY DIRECT FROM XIAMEN </span></div>
-
 <section class="band">
   <div class="wrap">
     <span class="spec-label">THE COLLECTIONS</span>
     <h2>Six lines, one factory floor <em>browse like a buyer.</em></h2>
     <div class="lookbook">
-      <div class="tile"><a class="cover" href="/products/two-piece-sets.html" aria-label="Two-piece sets"></a><img src="/img/categories/cat-twopiece.webp" alt="Four models in coordinated two-piece sets Shanlinyang Apparel private label" loading="lazy" width="420" height="525"><div class="lab"><span>LINE A · BESTSELLING CATEGORY</span><b>Two-Piece Sets</b></div></div>
-      <div class="tile"><a class="cover" href="/products/activewear-yoga.html" aria-label="Activewear"></a><img src="/img/categories/cat-activewear.webp" alt="Four models in activewear sets Shanlinyang Apparel" loading="lazy" width="420" height="525"><div class="lab"><span>LINE C</span><b>Activewear</b></div></div>
-      <div class="tile"><a class="cover" href="/products/dresses.html" aria-label="Dresses"></a><img src="/img/categories/cat-dresses.webp" alt="Four models in summer dresses Shanlinyang Apparel" loading="lazy" width="420" height="525"><div class="lab"><span>LINE D</span><b>Dresses</b></div></div>
-      <div class="tile"><a class="cover" href="/products/tracksuits-joggers.html" aria-label="Tracksuits"></a><img src="/img/categories/cat-tracksuit.webp" alt="Four models in velour tracksuits Shanlinyang Apparel" loading="lazy" width="420" height="525"><div class="lab"><span>LINE B</span><b>Tracksuits</b></div></div>
-      <div class="tile"><a class="cover" href="/products/swimwear.html" aria-label="Swimwear"></a><img src="/img/categories/cat-swimwear.webp" alt="Four models in swimwear and beachwear Shanlinyang Apparel" loading="lazy" width="420" height="525"><div class="lab"><span>LINE F</span><b>Swimwear</b></div></div>
-      <div class="tile"><a class="cover" href="/products/plus-size.html" aria-label="Plus size"></a><img src="/img/categories/cat-plussize.webp" alt="Plus size curve models XL-5XL Shanlinyang Apparel" loading="lazy" width="420" height="525"><div class="lab"><span>LINE E · SXL ON REAL CURVE BLOCKS</span><b>Plus Size Curve</b></div></div>
+      <div class="tile"><a class="cover" href="/products/two-piece-sets.html" aria-label="Two-piece sets"></a><img src="/img/categories/cat-twopiece.webp" alt="Four models in coordinated two-piece sets Shanlinyang Apparel private label" width="420" height="525"><div class="lab"><span>LINE A · BESTSELLING CATEGORY</span><b>Two-Piece Sets</b></div></div>
+      <div class="tile"><a class="cover" href="/products/activewear-yoga.html" aria-label="Activewear"></a><img src="/img/categories/cat-activewear.webp" alt="Four models in activewear sets Shanlinyang Apparel" width="420" height="525"><div class="lab"><span>LINE C</span><b>Activewear</b></div></div>
+      <div class="tile"><a class="cover" href="/products/dresses.html" aria-label="Dresses"></a><img src="/img/categories/cat-dresses.webp" alt="Four models in summer dresses Shanlinyang Apparel" width="420" height="525"><div class="lab"><span>LINE D</span><b>Dresses</b></div></div>
+      <div class="tile"><a class="cover" href="/products/tracksuits-joggers.html" aria-label="Tracksuits"></a><img src="/img/categories/cat-tracksuit.webp" alt="Four models in velour tracksuits Shanlinyang Apparel" width="420" height="525"><div class="lab"><span>LINE B</span><b>Tracksuits</b></div></div>
+      <div class="tile"><a class="cover" href="/products/swimwear.html" aria-label="Swimwear"></a><img src="/img/categories/cat-swimwear.webp" alt="Four models in swimwear and beachwear Shanlinyang Apparel" width="420" height="525"><div class="lab"><span>LINE F</span><b>Swimwear</b></div></div>
+      <div class="tile"><a class="cover" href="/products/plus-size.html" aria-label="Plus size"></a><img src="/img/categories/cat-plussize.webp" alt="Plus size curve models XL-5XL Shanlinyang Apparel" width="420" height="525"><div class="lab"><span>LINE E · SXL ON REAL CURVE BLOCKS</span><b>Plus Size Curve</b></div></div>
     </div>
   </div>
 </section>
-
-
 <section class="band band--ink" style="padding-top:3.4rem;padding-bottom:3.4rem">
   <div class="wrap">
     <div style="display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap">
@@ -243,10 +286,9 @@
       <h2>Our yoga line, photographed <em>worn.</em></h2></div>
       <a href="/lookbook.html" class="rail-hint" style="color:#E48BB1">FULL LOOKBOOK /a>
     </div>
-    <div class="gallery"><a class="g" href="/contact.html" aria-label="Inquire about Mauve racer tank set"><img src="/img/gallery/m11.webp" alt="Mauve racer tank set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" loading="lazy" width="600" height="750"><div class="cap"><b>Mauve racer tank set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Mauve lunge set"><img src="/img/gallery/m19.webp" alt="Mauve lunge set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" loading="lazy" width="600" height="909"><div class="cap"><b>Mauve lunge set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Sage strappy active set"><img src="/img/gallery/m15.webp" alt="Sage strappy active set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" loading="lazy" width="600" height="909"><div class="cap"><b>Sage strappy active set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Sage long-sleeve set"><img src="/img/gallery/m25.webp" alt="Sage long-sleeve set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" loading="lazy" width="600" height="909"><div class="cap"><b>Sage long-sleeve set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Cream knit set + cardigan"><img src="/img/gallery/m13.webp" alt="Cream knit set + cardigan Loungewear · Yoga, on-model studio photo by Shanlinyang Apparel" loading="lazy" width="600" height="750"><div class="cap"><b>Cream knit set + cardigan</b><span>Loungewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Cream zip jacket + set"><img src="/img/gallery/m17.webp" alt="Cream zip jacket + set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" loading="lazy" width="600" height="882"><div class="cap"><b>Cream zip jacket + set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Charcoal side-stretch set"><img src="/img/gallery/m12.webp" alt="Charcoal side-stretch set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" loading="lazy" width="600" height="857"><div class="cap"><b>Charcoal side-stretch set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Black crop tank + legging"><img src="/img/gallery/m21.webp" alt="Black crop tank + legging Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" loading="lazy" width="600" height="909"><div class="cap"><b>Black crop tank + legging</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Lilac seamless set"><img src="/img/gallery/m28.webp" alt="Lilac seamless set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" loading="lazy" width="600" height="750"><div class="cap"><b>Lilac seamless set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Olive meditation set"><img src="/img/gallery/m30.webp" alt="Olive meditation set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" loading="lazy" width="600" height="750"><div class="cap"><b>Olive meditation set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Mauve long-sleeve set"><img src="/img/gallery/m18.webp" alt="Mauve long-sleeve set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" loading="lazy" width="600" height="750"><div class="cap"><b>Mauve long-sleeve set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Charcoal scoop bra set"><img src="/img/gallery/m14.webp" alt="Charcoal scoop bra set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" loading="lazy" width="600" height="833"><div class="cap"><b>Charcoal scoop bra set</b><span>Activewear · Yoga</span></div></a></div>
+    <div class="gallery"><a class="g" href="/contact.html" aria-label="Inquire about Mauve racer tank set"><img src="/img/gallery/m11.webp" alt="Mauve racer tank set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" width="600" height="750"><div class="cap"><b>Mauve racer tank set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Mauve lunge set"><img src="/img/gallery/m19.webp" alt="Mauve lunge set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" width="600" height="909"><div class="cap"><b>Mauve lunge set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Sage strappy active set"><img src="/img/gallery/m15.webp" alt="Sage strappy active set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" width="600" height="909"><div class="cap"><b>Sage strappy active set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Sage long-sleeve set"><img src="/img/gallery/m25.webp" alt="Sage long-sleeve set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" width="600" height="909"><div class="cap"><b>Sage long-sleeve set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Cream knit set + cardigan"><img src="/img/gallery/m13.webp" alt="Cream knit set + cardigan Loungewear · Yoga, on-model studio photo by Shanlinyang Apparel" width="600" height="750"><div class="cap"><b>Cream knit set + cardigan</b><span>Loungewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Cream zip jacket + set"><img src="/img/gallery/m17.webp" alt="Cream zip jacket + set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" width="600" height="882"><div class="cap"><b>Cream zip jacket + set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Charcoal side-stretch set"><img src="/img/gallery/m12.webp" alt="Charcoal side-stretch set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" width="600" height="857"><div class="cap"><b>Charcoal side-stretch set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Black crop tank + legging"><img src="/img/gallery/m21.webp" alt="Black crop tank + legging Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" width="600" height="909"><div class="cap"><b>Black crop tank + legging</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Lilac seamless set"><img src="/img/gallery/m28.webp" alt="Lilac seamless set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" width="600" height="750"><div class="cap"><b>Lilac seamless set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Olive meditation set"><img src="/img/gallery/m30.webp" alt="Olive meditation set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" width="600" height="750"><div class="cap"><b>Olive meditation set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Mauve long-sleeve set"><img src="/img/gallery/m18.webp" alt="Mauve long-sleeve set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" width="600" height="750"><div class="cap"><b>Mauve long-sleeve set</b><span>Activewear · Yoga</span></div></a><a class="g" href="/contact.html" aria-label="Inquire about Charcoal scoop bra set"><img src="/img/gallery/m14.webp" alt="Charcoal scoop bra set Activewear · Yoga, on-model studio photo by Shanlinyang Apparel" width="600" height="833"><div class="cap"><b>Charcoal scoop bra set</b><span>Activewear · Yoga</span></div></a></div>
   </div>
 </section>
-
 <section class="band band--tint" style="padding-top:3rem;padding-bottom:3rem">
   <div class="wrap">
     <div style="display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap">
@@ -255,7 +297,7 @@
       <span class="rail-hint">DRAG / SCROLL /span>
     </div>
     <div class="rail">
-<article class="pcard"><span class="badge badge--hot">BESTSELLER</span><a class="ph" style="background:#fff" href="/products/activewear-yoga.html"><img src="/img/categories/prod-activewear-set.webp" alt="Four models in seamless yoga sets bra top and high-waist shorts, Shanlinyang Apparel private label" loading="lazy" width="420" height="525" style="width:100%;height:100%;object-fit:cover"></a>
+<article class="pcard"><span class="badge badge--hot">BESTSELLER</span><a class="ph" style="background:#fff" href="/products/activewear-yoga.html"><img src="/img/categories/prod-activewear-set.webp" alt="Four models in seamless yoga sets bra top and high-waist shorts, Shanlinyang Apparel private label" width="420" height="525" style="width:100%;height:100%;object-fit:cover"></a>
 <div class="meta"><span class="style-no">STYLE LYSKMEQ-204</span><h3><a href="/products/activewear-yoga.html">Seamless Yoga Set</a></h3>
 <p class="fab">4-way stretch nylon, S–XL</p>
 <div class="specrows"><div><b>FOB</b>$4.90+</div><div><b>MOQ</b>2 pcs</div><div><b>Custom</b>100 pcs</div></div>
@@ -309,7 +351,6 @@
     <p style="text-align:center;margin-top:.6rem"><a class="btn btn--ghost" href="/products/">Browse all six lines</a></p>
   </div>
 </section>
-
 <section class="band band--ink">
   <div class="wrap factory">
     <div>
@@ -333,8 +374,6 @@
     </div>
   </div>
 </section>
-
-
 <section class="band facility">
   <div class="wrap">
     <span class="spec-label">INSIDE THE FACTORY · XIAMEN</span>
@@ -348,8 +387,6 @@
     </div>
   </div>
 </section>
-
-
 <section class="band">
   <div class="wrap">
     <span class="spec-label">WHY FACTORY-DIRECT</span>
@@ -371,7 +408,6 @@
     </div>
   </div>
 </section>
-
 <section class="band">
   <div class="wrap">
     <span class="spec-label">THE CUSTOM PROGRAM</span>
@@ -389,8 +425,6 @@
     </ol>
   </div>
 </section>
-
-
 <section class="band band--tint">
   <div class="wrap">
     <span class="spec-label">CUSTOM LOGO &amp; BRANDING SHOWCASE</span>
@@ -405,7 +439,6 @@
     <p style="margin-top:1.6rem"><a class="btn" href="/contact.html">Send your logo get a free placement mockup</a></p>
   </div>
 </section>
-
 <section class="band band--tint">
   <div class="wrap">
     <span class="spec-label">MATERIALS</span>
@@ -423,7 +456,6 @@
     <p style="margin-top:1.4rem"><a href="/fabrics.html">Open the full fabric library weights, uses, factory notes /a></p>
   </div>
 </section>
-
 <section class="band">
   <div class="wrap">
     <span class="spec-label">WHO WE SERVE</span>
@@ -435,8 +467,6 @@
     </div>
   </div>
 </section>
-
-
 <section class="band">
   <div class="wrap">
     <span class="spec-label">BUYER FEEDBACK</span>
@@ -450,7 +480,6 @@
     <p style="margin-top:1.2rem;font-family:var(--font-mono);font-size:.72rem;color:var(--mono-grey)">VERIFIED BUYER REFERENCES AVAILABLE ON REQUEST DURING QUOTATION.</p>
   </div>
 </section>
-
 <section class="band band--tint">
   <div class="wrap">
     <span class="spec-label">PRODUCTION CASES</span>
@@ -463,7 +492,6 @@
     <p style="margin-top:1.4rem"><a href="/case-studies.html">Read the full production cases /a></p>
   </div>
 </section>
-
 <section class="band faq" id="faq">
   <div class="wrap">
     <span class="spec-label">BUYER QUESTIONS</span>
@@ -472,7 +500,6 @@
     <p style="margin-top:1.2rem"><a href="/faq.html">See all 12 questions /a></p>
   </div>
 </section>
-
 <section class="band band--tint">
   <div class="wrap">
     <span class="spec-label">SOURCING GUIDES</span>
@@ -545,7 +572,6 @@ els.forEach(function(e){e.classList.add('reveal')});
 var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.08});
 els.forEach(function(e){io.observe(e)});})();
 </script>
-
 <div id="qv" role="dialog" aria-modal="true" aria-label="Product quick view"><span class="close" id="qvClose" role="button" tabindex="0" aria-label="Close">×</span>
 <div class="box"><img id="qvImg" src="" alt=""><div class="det">
 <span class="style-no" id="qvNo"></span><h3 id="qvNm"></h3><div class="price" id="qvFob"></div>
@@ -563,6 +589,40 @@ var qv=document.getElementById('qv');
 function openQV(el){
   document.getElementById('qvImg').src=el.dataset.img;
   document.getElementById('qvImg').alt=el.dataset.nm;
+  document.getElementById('qvNo').textContent='STYLE '+el.dataset.no;
+  document.getElementById('qvNm').textContent=el.dataset.nm;
+  document.getElementById('qvFob').textContent='FOB '+el.dataset.fob;
+  document.getElementById('qvFab').textContent=el.dataset.fab;
+  document.getElementById('qvMoq').textContent=el.dataset.moq+' pcs (test order)';
+  document.getElementById('qvWa').href='https://wa.me/8617750659112?text='+encodeURIComponent('Hello Shanlinyang, please quote style '+el.dataset.no+' ('+el.dataset.nm+').');
+  qv.classList.add('on');document.body.style.overflow='hidden';
+}
+function closeQV(){qv.classList.remove('on');document.body.style.overflow='';}
+document.querySelectorAll('.qv-open').forEach(function(el){
+  el.addEventListener('click',function(){openQV(el)});
+  el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openQV(el)}});
+});
+if(qv){document.getElementById('qvClose').onclick=closeQV;qv.addEventListener('click',function(e){if(e.target===qv)closeQV()});
+addEventListener('keydown',function(e){if(e.key==='Escape')closeQV()});}
+// filters
+var pills=document.querySelectorAll('.filterbar button');
+pills.forEach(function(b){b.onclick=function(){
+  pills.forEach(function(x){x.classList.remove('active')});b.classList.add('active');
+  var f=b.dataset.filter;
+  document.querySelectorAll('.pcard[data-tag]').forEach(function(c){
+    c.classList.toggle('hide', f!=='all' && c.dataset.tag!==f);});
+};});
+// count-up stats
+var ce=document.querySelectorAll('.stats b');
+if(ce.length){var io=new IntersectionObserver(function(en){en.forEach(function(x){
+  if(x.isIntersecting){var el=x.target;var t=el.textContent;var m=t.match(/[\d,]+/);
+  if(m){var n=parseInt(m[0].replace(/,/g,''));var suf=t.replace(m[0],'');var s=0,step=Math.max(1,Math.ceil(n/40));
+  var iv=setInterval(function(){s+=step;if(s>=n){s=n;clearInterval(iv)}el.textContent=s.toLocaleString()+suf;},22);}
+  io.unobserve(el);}});},{threshold:.5});ce.forEach(function(e){io.observe(e)});}
+})();
+</script>
+</body>
+</html>Img').alt=el.dataset.nm;
   document.getElementById('qvNo').textContent='STYLE '+el.dataset.no;
   document.getElementById('qvNm').textContent=el.dataset.nm;
   document.getElementById('qvFob').textContent='FOB '+el.dataset.fob;

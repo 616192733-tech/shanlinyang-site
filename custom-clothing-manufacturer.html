@@ -17,7 +17,9 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,600;1,500&family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,600;1,500&family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,600;1,500&family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
+<noscript></noscript>
 <link rel="icon" type="image/png" href="/img/apple-touch-icon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
@@ -188,13 +190,11 @@
 <span class="spec-label">SERVICE OEM · ODM · PRIVATE LABEL</span>
 <h1>Custom Clothing Manufacturer for Women's Fashion Brands</h1>
 <p class="lead">We turn tech packs, sketches and reference photos into branded, retail-ready garments from 100 pieces per color per style. This page explains exactly how our custom program works, what it costs to start, and what you need to send us.</p>
-
 <div class="grid-3" style="margin-top:2rem">
 <div class="vprop"><span class="spec-label">PROGRAM 1</span><h3>Private label on stock styles</h3><p>The fastest route: pick any style from our catalog, we apply your logo, woven labels, hangtags and packaging. MOQ 100pcs per color per style; no development fee.</p></div>
 <div class="vprop"><span class="spec-label">PROGRAM 2</span><h3>OEM from your tech pack</h3><p>You own the design; we manufacture it exactly to spec. Send measurements, fabric requirements and artwork we quote within 24h and sample in 72 days.</p></div>
 <div class="vprop"><span class="spec-label">PROGRAM 3</span><h3>ODM from a sketch or photo</h3><p>No tech pack? Our pattern room develops the design from a sketch or reference photo, including fabric sourcing and fit grading for your market.</p></div>
 </div>
-
 <h2 style="margin-top:3rem">What we can customize</h2>
 <figure class="cphoto"><img src="/img/company/showroom-design.webp" alt="Shanlinyang Apparel design and sampling studio tech packs, color cards and fabric swatches laid out for a private-label development" loading="lazy" width="1280" height="960"><figcaption>Design &amp; sampling studio · tech packs · color cards · swatches</figcaption></figure>
 <table class="data">
@@ -205,7 +205,6 @@
 <tr><td>Fit &amp; pattern</td><td>Full pattern development, US/EU grading, plus-size blocks XL–5XL</td><td>100 pcs</td></tr>
 <tr><td>Packaging</td><td>Branded poly bags, hangtags, tissue, box inserts</td><td>100 pcs</td></tr>
 </table>
-
 <h2 style="margin-top:2.4rem">Timeline &amp; cost structure</h2>
 <ol class="steps" style="margin-top:1.4rem">
 <li><h3>Quote free, 24h</h3><p>Send design + quantity. We return unit price, sample fee and lead time.</p></li>
@@ -279,7 +278,6 @@ els.forEach(function(e){e.classList.add('reveal')});
 var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.08});
 els.forEach(function(e){io.observe(e)});})();
 </script>
-
 <div id="qv" role="dialog" aria-modal="true" aria-label="Product quick view"><span class="close" id="qvClose" role="button" tabindex="0" aria-label="Close">×</span>
 <div class="box"><img id="qvImg" src="" alt=""><div class="det">
 <span class="style-no" id="qvNo"></span><h3 id="qvNm"></h3><div class="price" id="qvFob"></div>
