@@ -19,6 +19,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,600;1,500&family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" onload="this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,600;1,500&family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
+<style>
+/* Prevent CLS from font swap */
+h1,h2,h3,.heroLite .copy { font-display: optional; }
+.heroLite { min-height: 580px; }
+.hl-models img { aspect-ratio: 992/1073; width: 100%; }
+</style>
 <noscript></noscript>
 <link rel="icon" type="image/png" href="/img/apple-touch-icon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
@@ -56,16 +62,18 @@ header.site{background:rgba(244,240,232,.94);backdrop-filter:blur(8px);border-bo
 nav.main ul{list-style:none;display:flex;gap:1.5rem;flex-wrap:wrap}
 nav.main a{color:var(--ink);font-family:var(--font-ui);font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase}
 nav.main li{position:relative}
-.heroLite{background:linear-gradient(180deg,#F7F3EC 0%,#F2ECE1 78%,#EFE8DB 100%);position:relative;overflow:hidden;padding:2rem 0 0}
+/* Prevent CLS from font swap */
+h1,h2,h3,.heroLite .copy { font-display: optional; }
+.heroLite{background:linear-gradient(180deg,#F7F3EC 0%,#F2ECE1 78%,#EFE8DB 100%);position:relative;overflow:hidden;padding:2rem 0 0;min-height: 580px;}
 .heroLite .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:2.4rem;align-items:center;position:relative;z-index:2}
 .heroLite .copy{padding-bottom:1.2rem}
 .heroLite .eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--thread);display:block;margin-bottom:1.1rem}
-.heroLite h1{font-family:var(--font-display);font-size:clamp(2.4rem,4.6vw,3.9rem);line-height:1.04;color:var(--ink);font-weight:600;letter-spacing:-.01em}
+.heroLite h1{font-family:var(--font-display);font-size:clamp(2.4rem,4.6vw,3.9rem);line-height:1.04;color:var(--ink);font-weight:600;letter-spacing:-.01em;font-size-adjust: none;}
 .heroLite h1 em{display:block;font-style:italic;color:var(--thread);font-weight:500;margin-top:.05em}
 .heroLite .sub{font-size:1.02rem;color:var(--ink-soft);max-width:46ch;margin:1rem 0 1.3rem}
 .hl-stage{position:relative;min-height:470px;align-self:stretch;display:flex}
 .hl-models{position:absolute;left:4%;bottom:0;top:0;z-index:2;display:flex;align-items:flex-end}
-.hl-models img{height:100%;width:auto;max-width:none;display:block;filter:drop-shadow(0 20px 32px rgba(60,40,30,.15))}
+.hl-models img{height:100%;width:100%;max-width:none;display:block;filter:drop-shadow(0 20px 32px rgba(60,40,30,.15));aspect-ratio: 992/1073;}
 @media(max-width:980px){.heroLite .wrap{grid-template-columns:1fr;gap:1rem}.hl-stage{min-height:480px;margin-top:.5rem}}
 @media(max-width:560px){.hl-stage{min-height:400px}.hl-models{left:0}}
 </style>
@@ -270,12 +278,12 @@ nav.main li{position:relative}
     <span class="spec-label">THE COLLECTIONS</span>
     <h2>Six lines, one factory floor <em>browse like a buyer.</em></h2>
     <div class="lookbook">
-      <div class="tile"><a class="cover" href="/products/two-piece-sets.html" aria-label="Two-piece sets"></a><img src="/img/categories/cat-twopiece.webp" alt="Four models in coordinated two-piece sets Shanlinyang Apparel private label" width="420" height="525"><div class="lab"><span>LINE A · BESTSELLING CATEGORY</span><b>Two-Piece Sets</b></div></div>
-      <div class="tile"><a class="cover" href="/products/activewear-yoga.html" aria-label="Activewear"></a><img src="/img/categories/cat-activewear.webp" alt="Four models in activewear sets Shanlinyang Apparel" width="420" height="525"><div class="lab"><span>LINE C</span><b>Activewear</b></div></div>
-      <div class="tile"><a class="cover" href="/products/dresses.html" aria-label="Dresses"></a><img src="/img/categories/cat-dresses.webp" alt="Four models in summer dresses Shanlinyang Apparel" width="420" height="525"><div class="lab"><span>LINE D</span><b>Dresses</b></div></div>
-      <div class="tile"><a class="cover" href="/products/tracksuits-joggers.html" aria-label="Tracksuits"></a><img src="/img/categories/cat-tracksuit.webp" alt="Four models in velour tracksuits Shanlinyang Apparel" width="420" height="525"><div class="lab"><span>LINE B</span><b>Tracksuits</b></div></div>
-      <div class="tile"><a class="cover" href="/products/swimwear.html" aria-label="Swimwear"></a><img src="/img/categories/cat-swimwear.webp" alt="Four models in swimwear and beachwear Shanlinyang Apparel" width="420" height="525"><div class="lab"><span>LINE F</span><b>Swimwear</b></div></div>
-      <div class="tile"><a class="cover" href="/products/plus-size.html" aria-label="Plus size"></a><img src="/img/categories/cat-plussize.webp" alt="Plus size curve models XL-5XL Shanlinyang Apparel" width="420" height="525"><div class="lab"><span>LINE E · SXL ON REAL CURVE BLOCKS</span><b>Plus Size Curve</b></div></div>
+      <div class="tile"><a class="cover" href="/products/two-piece-sets.html" aria-label="Two-piece sets"></a><img src="/img/categories/cat-twopiece.webp" alt="Four models in coordinated two-piece sets Shanlinyang Apparel private label" width="735" height="919"><div class="lab"><span>LINE A · BESTSELLING CATEGORY</span><b>Two-Piece Sets</b></div></div>
+      <div class="tile"><a class="cover" href="/products/activewear-yoga.html" aria-label="Activewear"></a><img src="/img/categories/cat-activewear.webp" alt="Four models in activewear sets Shanlinyang Apparel" width="309" height="386"><div class="lab"><span>LINE C</span><b>Activewear</b></div></div>
+      <div class="tile"><a class="cover" href="/products/dresses.html" aria-label="Dresses"></a><img src="/img/categories/cat-dresses.webp" alt="Four models in summer dresses Shanlinyang Apparel" width="466" height="582"><div class="lab"><span>LINE D</span><b>Dresses</b></div></div>
+      <div class="tile"><a class="cover" href="/products/tracksuits-joggers.html" aria-label="Tracksuits"></a><img src="/img/categories/cat-tracksuit.webp" alt="Four models in velour tracksuits Shanlinyang Apparel" width="466" height="582"><div class="lab"><span>LINE B</span><b>Tracksuits</b></div></div>
+      <div class="tile"><a class="cover" href="/products/swimwear.html" aria-label="Swimwear"></a><img src="/img/categories/cat-swimwear.webp" alt="Four models in swimwear and beachwear Shanlinyang Apparel" width="309" height="386"><div class="lab"><span>LINE F</span><b>Swimwear</b></div></div>
+      <div class="tile"><a class="cover" href="/products/plus-size.html" aria-label="Plus size"></a><img src="/img/categories/cat-plussize.webp" alt="Plus size curve models XL-5XL Shanlinyang Apparel" width="466" height="582"><div class="lab"><span>LINE E · SXL ON REAL CURVE BLOCKS</span><b>Plus Size Curve</b></div></div>
     </div>
   </div>
 </section>

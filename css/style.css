@@ -359,11 +359,11 @@ table.compare .no{color:#B4513E}
 .stats b[data-count]{font-variant-numeric:tabular-nums}
 
 /* ============ v7: light editorial banner (matches uploaded reference) ============ */
-.heroLite{background:linear-gradient(180deg,#F7F3EC 0%,#F2ECE1 78%,#EFE8DB 100%);position:relative;overflow:hidden;padding:2rem 0 0}
+.heroLite{background:linear-gradient(180deg,#F7F3EC 0%,#F2ECE1 78%,#EFE8DB 100%);position:relative;overflow:hidden;padding:2rem 0 0;min-height: 580px;}
 .heroLite .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:2.4rem;align-items:center;position:relative;z-index:2}
 .heroLite .copy{padding-bottom:1.2rem}
 .heroLite .eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--thread);display:block;margin-bottom:1.1rem}
-.heroLite h1{font-family:var(--font-display);font-size:clamp(2.4rem,4.6vw,3.9rem);line-height:1.04;color:var(--ink);font-weight:600;letter-spacing:-.01em}
+.heroLite h1{font-family:var(--font-display);font-size:clamp(2.4rem,4.6vw,3.9rem);line-height:1.04;color:var(--ink);font-weight:600;letter-spacing:-.01em;font-size-adjust: none;}
 .heroLite h1 em{display:block;font-style:italic;color:var(--thread);font-weight:500;margin-top:.05em}
 .heroLite .sub{font-size:1.02rem;color:var(--ink-soft);max-width:46ch;margin:1rem 0 1.3rem}
 /* feature icons row */
@@ -378,7 +378,7 @@ table.compare .no{color:#B4513E}
 .hl-stage{position:relative;min-height:470px;align-self:stretch;display:flex}
 /* models scaled to FILL the stage height, anchored bottom-left */
 .hl-models{position:absolute;left:4%;bottom:0;top:0;z-index:2;display:flex;align-items:flex-end}
-.hl-models img{height:100%;width:auto;max-width:none;display:block;filter:drop-shadow(0 20px 32px rgba(60,40,30,.15))}
+.hl-models img{height:100%;width:auto;max-width:none;display:block;filter:drop-shadow(0 20px 32px rgba(60,40,30,.15));aspect-ratio: 992/1073;}
 .hl-models .ph-fill{height:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;color:#A98E78;background:repeating-linear-gradient(45deg,#EDE4D6,#EDE4D6 14px,#E6DBCA 14px,#E6DBCA 28px);border:2px dashed #C9B59E;border-radius:6px;padding:1.4rem;text-transform:uppercase;line-height:1.7}
 /* YOUR BRAND label+tag photo, top-right, framed & tilted */
 .hl-cards{position:absolute;top:1%;right:0;width:32%;z-index:3}
