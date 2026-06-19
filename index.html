@@ -32,9 +32,10 @@ body{font-family:"IBM Plex Sans",system-ui,sans-serif;background:#F7F4EC}
 h1,h2{font-family:"Bodoni Moda",Didot,"Times New Roman",serif;font-weight:600;line-height:1.06}
 @media(max-width:768px){
   .heroLite{min-height:auto;padding:1.5rem 0 0}
-  .heroLite .wrap{grid-template-columns:1fr;gap:1rem}
-  .hl-stage{min-height:360px}
+  .heroLite .wrap{grid-template-columns:1fr;gap:0}
+  .hl-stage{min-height:300px;margin-top:1rem}
   .hl-models img{height:100%;width:auto}
+  .heroLite h1{font-size:clamp(2rem,8vw,2.8rem);line-height:1.08}
 }
 </style>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/bodoni-moda-600.woff2" crossorigin>
@@ -229,8 +230,8 @@ window.addEventListener('load',function(){
       <div class="hl-models">
         <img src="/img/hero-models.webp"
              srcset="/img/hero-models-mobile.webp 720w, /img/hero-models.webp 992w"
-             sizes="(max-width:768px) 100vw, 50vw"
-             alt="Five models wearing private-label activewear sets — sports bras and leggings in rose, sage, black, cream and beige, manufactured by Shanlinyang Apparel" width="992" height="1073" fetchpriority="high" decoding="sync">
+             sizes="(max-width:980px) 100vw, 50vw"
+             alt="Five models wearing private-label activewear sets — sports bras and leggings in rose, sage, black, cream and beige, manufactured by Shanlinyang Apparel" width="992" height="1073" fetchpriority="high" decoding="sync" loading="eager">
       </div>
       <div class="hl-logocard">
         <h2>Custom Logo</h2>
@@ -628,6 +629,8 @@ if(ce.length){var io=new IntersectionObserver(function(en){en.forEach(function(x
 <script>(function(){var t=document.querySelector(".nav-toggle"),h=document.querySelector("header.site");if(t&&h)t.addEventListener("click",function(){var o=h.classList.toggle("nav-open");t.setAttribute("aria-expanded",o?"true":"false");});})();</script>
 </body>
 </html>
+</html>-expanded",o?"true":"false");});})();</script>
+</body>
 </html>-expanded",o?"true":"false");});})();</script>
 </body>
 </html>
