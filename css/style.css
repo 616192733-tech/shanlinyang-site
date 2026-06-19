@@ -44,6 +44,10 @@ body{font-family:var(--font-body);color:var(--ink);background:var(--paper);line-
 img,svg{max-width:100%;display:block}
 a{color:var(--thread);text-decoration:none}
 a:hover{text-decoration:underline}
+article a, .blog-content a, main p a, .desc a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--thread);outline-offset:2px}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 .skip{position:absolute;left:-9999px;top:0;background:var(--thread);color:#fff;padding:.6rem 1rem;z-index:100;font-weight:600}
@@ -455,7 +459,7 @@ figure.cphoto figcaption{font-family:var(--font-mono);font-size:.62rem;letter-sp
 .form-err a{color:#c0392b}
 
 /* a11y+mobile hero (added) */
-.spec-label,.heroLite .eyebrow,.hl-logocard h4,.facility-grid figcaption b{color:var(--thread-deep)}
+.spec-label,.heroLite .eyebrow,.hl-logocard h2,.facility-grid figcaption b{color:var(--thread-deep)}
 @media(max-width:620px){
   .heroLite{padding-top:1.4rem}
   .hl-stage{min-height:auto;display:block;margin-top:1.1rem}
@@ -517,4 +521,6 @@ header.site.nav-open .nav-toggle span:nth-child(3){transform:translateY(-8px) ro
   footer.site .cols{grid-template-columns:1fr;gap:0;margin-bottom:1.1rem}
   footer.site .cols>div:not(:first-child){display:none}
   footer.site{padding:2.4rem 0 1.6rem}
+}
+.6rem}
 }
