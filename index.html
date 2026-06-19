@@ -18,7 +18,7 @@
 <link rel="icon" type="image/png" href="/img/apple-touch-icon.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" as="image" href="/img/hero-models.webp" fetchpriority="high">
+<link rel="preload" as="image" href="/img/hero-models.webp" imagesrcset="/img/hero-models-mobile.webp 720w, /img/hero-models.webp 992w" imagesizes="(max-width:768px) 100vw, 50vw" fetchpriority="high">
 <meta name="theme-color" content="#15171D">
 <style>
 /* Critical CSS — prevent CLS */
@@ -30,6 +30,12 @@
 header.site{background:rgba(244,240,232,.94);backdrop-filter:blur(8px);border-bottom:1px solid #E8E2D9;position:sticky;top:0;z-index:50;height:64px}
 body{font-family:"IBM Plex Sans",system-ui,sans-serif;background:#F7F4EC}
 h1,h2{font-family:"Bodoni Moda",Didot,"Times New Roman",serif;font-weight:600;line-height:1.06}
+@media(max-width:768px){
+  .heroLite{min-height:auto;padding:1.5rem 0 0}
+  .heroLite .wrap{grid-template-columns:1fr;gap:1rem}
+  .hl-stage{min-height:360px}
+  .hl-models img{height:100%;width:auto}
+}
 </style>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/bodoni-moda-600.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/fonts/plex-sans-400.woff2" crossorigin>
@@ -221,7 +227,10 @@ window.addEventListener('load',function(){
     </div>
     <div class="hl-stage">
       <div class="hl-models">
-        <img src="/img/hero-models.webp" alt="Five models wearing private-label activewear sets — sports bras and leggings in rose, sage, black, cream and beige, manufactured by Shanlinyang Apparel" width="992" height="1073" fetchpriority="high" decoding="async">
+        <img src="/img/hero-models.webp"
+             srcset="/img/hero-models-mobile.webp 720w, /img/hero-models.webp 992w"
+             sizes="(max-width:768px) 100vw, 50vw"
+             alt="Five models wearing private-label activewear sets — sports bras and leggings in rose, sage, black, cream and beige, manufactured by Shanlinyang Apparel" width="992" height="1073" fetchpriority="high" decoding="sync">
       </div>
       <div class="hl-logocard">
         <h4>Custom Logo</h4>
