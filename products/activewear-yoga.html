@@ -224,6 +224,17 @@
 </script>
 <!-- Google Analytics 4 — 替换 G-XXXXXXXXXX 为你 analytics.google.com 的实际 Measurement ID -->
 
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {"@type": "Question", "name": "What is the MOQ for custom Activewear & Yoga Wear?", "acceptedAnswer": {"@type": "Answer", "text": "Custom MOQ is 100 pieces per color per style. Stock wholesale from 2 pieces."}},
+  {"@type": "Question", "name": "How long does Activewear & Yoga Wear production take?", "acceptedAnswer": {"@type": "Answer", "text": "Sampling 7–12 business days. Bulk production 20–35 business days after sample approval."}},
+  {"@type": "Question", "name": "Can I add my own label to Activewear & Yoga Wear?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Screen print, embroidery, woven labels, hangtags and custom packaging available."}}
+ ]
+}
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -339,6 +350,24 @@
     <p><a class="btn" href="/contact.html">Request a free quote</a> &nbsp; <a class="btn btn--wa" href="https://wa.me/8617750659112?text=Hello%20Shanlinyang%2C%20I%27d%20like%20a%20quote%20for%20custom%20women%27s%20clothing." rel="noopener">Chat on WhatsApp</a></p>
   </div>
 </section>
+<section style="background:#F7F4EC;padding:4rem 0">
+<div class="wrap">
+<h2>Activewear &amp; Yoga Wear Manufacturing at Shanlinyang</h2>
+<p>Shanlinyang Apparel specializes in high-performance activewear and yoga wear for global brands. Our collections feature squat-proof leggings, sports bras, crop tops, and coordinated yoga sets crafted from premium 4-way stretch fabrics including Nylon/Spandex and Polyester/Spandex blends. With a custom MOQ of just 100 pieces per color per style, we're the ideal manufacturing partner for DTC brands, Shopify sellers, and boutique activewear labels looking to launch or scale their collections.</p>
+<h3>Why Source Activewear from Shanlinyang?</h3>
+<ul><li>Squat-proof opacity testing on all leggings</li><li>4-way stretch with 80%+ recovery rate</li><li>Moisture-wicking and quick-dry finishes available</li><li>Custom MOQ from 100pcs — ideal for new brand launches</li><li>Seamless and cut-and-sew options</li></ul>
+<h3>Activewear FAQ</h3>
+<dl>
+<dt>What is the MOQ for custom activewear?</dt><dd>100 pieces per color per style for custom orders. Stock wholesale starts from 2 pieces.</dd>
+<dt>What fabrics do you use for yoga wear?</dt><dd>We use Nylon/Spandex (80/20), Polyester/Spandex, and recycled fabric options. All activewear undergoes squat-proof opacity testing.</dd>
+<dt>Can I get seamless activewear?</dt><dd>Yes, we offer both seamless knit and cut-and-sew activewear options.</dd>
+<dt>How long does activewear production take?</dt><dd>Sampling: 7–12 business days. Bulk: 20–35 business days after sample approval.</dd>
+<dt>Do you ship activewear to the USA?</dt><dd>Yes, we ship worldwide via DHL/FedEx/UPS. DDP service available to the US and EU.</dd>
+</dl>
+<div style="text-align:center;margin-top:2rem"><a class="btn" href="/contact.html">Get a Quote for Custom Activewear →</a></div>
+</div>
+</section>
+
 <footer class="site">
   <div class="wrap">
     <div class="cols">
@@ -413,6 +442,37 @@ function openQV(el){
   document.getElementById('qvNm').textContent=el.dataset.nm;
   document.getElementById('qvFob').textContent='FOB '+el.dataset.fob;
   document.getElementById('qvFab').textContent=el.dataset.fab;
+  document.getElementById('qvMoq').textContent=el.dataset.moq+' pcs (test order)';
+  document.getElementById('qvWa').href='https://wa.me/8617750659112?text='+encodeURIComponent('Hello Shanlinyang, please quote style '+el.dataset.no+' ('+el.dataset.nm+').');
+  qv.classList.add('on');document.body.style.overflow='hidden';
+}
+function closeQV(){qv.classList.remove('on');document.body.style.overflow='';}
+document.querySelectorAll('.qv-open').forEach(function(el){
+  el.addEventListener('click',function(){openQV(el)});
+  el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openQV(el)}});
+});
+if(qv){document.getElementById('qvClose').onclick=closeQV;qv.addEventListener('click',function(e){if(e.target===qv)closeQV()});
+addEventListener('keydown',function(e){if(e.key==='Escape')closeQV()});}
+// filters
+var pills=document.querySelectorAll('.filterbar button');
+pills.forEach(function(b){b.onclick=function(){
+  pills.forEach(function(x){x.classList.remove('active')});b.classList.add('active');
+  var f=b.dataset.filter;
+  document.querySelectorAll('.pcard[data-tag]').forEach(function(c){
+    c.classList.toggle('hide', f!=='all' && c.dataset.tag!==f);});
+};});
+// count-up stats
+var ce=document.querySelectorAll('.stats b');
+if(ce.length){var io=new IntersectionObserver(function(en){en.forEach(function(x){
+  if(x.isIntersecting){var el=x.target;var t=el.textContent;var m=t.match(/[\d,]+/);
+  if(m){var n=parseInt(m[0].replace(/,/g,''));var suf=t.replace(m[0],'');var s=0,step=Math.max(1,Math.ceil(n/40));
+  var iv=setInterval(function(){s+=step;if(s>=n){s=n;clearInterval(iv)}el.textContent=s.toLocaleString()+suf;},22);}
+  io.unobserve(el);}});},{threshold:.5});ce.forEach(function(e){io.observe(e)});}
+})();
+</script>
+<script>(function(){var t=document.querySelector(".nav-toggle"),h=document.querySelector("header.site");if(t&&h)t.addEventListener("click",function(){var o=h.classList.toggle("nav-open");t.setAttribute("aria-expanded",o?"true":"false");});})();</script>
+</body>
+</html>.getElementById('qvFab').textContent=el.dataset.fab;
   document.getElementById('qvMoq').textContent=el.dataset.moq+' pcs (test order)';
   document.getElementById('qvWa').href='https://wa.me/8617750659112?text='+encodeURIComponent('Hello Shanlinyang, please quote style '+el.dataset.no+' ('+el.dataset.nm+').');
   qv.classList.add('on');document.body.style.overflow='hidden';

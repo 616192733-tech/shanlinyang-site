@@ -224,6 +224,17 @@
 </script>
 <!-- Google Analytics 4 — 替换 G-XXXXXXXXXX 为你 analytics.google.com 的实际 Measurement ID -->
 
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {"@type": "Question", "name": "What is the MOQ for custom Plus Size Clothing?", "acceptedAnswer": {"@type": "Answer", "text": "Custom MOQ is 100 pieces per color per style. Stock wholesale from 2 pieces."}},
+  {"@type": "Question", "name": "How long does Plus Size Clothing production take?", "acceptedAnswer": {"@type": "Answer", "text": "Sampling 7–12 business days. Bulk production 20–35 business days after sample approval."}},
+  {"@type": "Question", "name": "Can I add my own label to Plus Size Clothing?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Screen print, embroidery, woven labels, hangtags and custom packaging available."}}
+ ]
+}
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -339,6 +350,24 @@
     <p><a class="btn" href="/contact.html">Request a free quote</a> &nbsp; <a class="btn btn--wa" href="https://wa.me/8617750659112?text=Hello%20Shanlinyang%2C%20I%27d%20like%20a%20quote%20for%20custom%20women%27s%20clothing." rel="noopener">Chat on WhatsApp</a></p>
   </div>
 </section>
+<section style="background:#F7F4EC;padding:4rem 0">
+<div class="wrap">
+<h2>Plus Size Clothing Manufacturing (XL–5XL)</h2>
+<p>Shanlinyang Apparel offers dedicated plus-size manufacturing with genuine curve-graded patterns from XL to 5XL — not simply scaled-up straight sizes. Our plus-size range includes activewear, two-piece sets, dresses, tracksuits, and swimwear, all designed with real curve blocks that ensure proper fit and comfort for plus-size customers.</p>
+<h3>Why Our Plus Size Manufacturing Stands Out</h3>
+<ul><li>Genuine curve-graded blocks from XL to 5XL</li><li>Dedicated plus-size patterns — not scaled-up straight sizes</li><li>Full range: activewear, sets, dresses, swimwear, tracksuits</li><li>4-way stretch fabrics for comfort and recovery</li><li>Custom MOQ from 100pcs per color per style</li></ul>
+<h3>Plus Size FAQ</h3>
+<dl>
+<dt>What plus sizes do you manufacture?</dt><dd>We manufacture from XL to 5XL using dedicated curve-graded patterns.</dd>
+<dt>Are your plus size patterns graded or scaled up?</dt><dd>Our plus-size patterns are genuinely curve-graded on real plus-size blocks, not scaled-up from straight sizes.</dd>
+<dt>What is the MOQ for custom plus size clothing?</dt><dd>100 pieces per color per style. Stock plus-size styles from 2 pieces.</dd>
+<dt>What fabrics work best for plus size activewear?</dt><dd>We recommend 4-way stretch Nylon/Spandex or Polyester/Spandex for maximum comfort and recovery.</dd>
+<dt>Can I order mixed sizes in one batch?</dt><dd>Yes, you can specify a size ratio within your order (e.g., 20% XL, 30% 2XL, etc.).</dd>
+</dl>
+<div style="text-align:center;margin-top:2rem"><a class="btn" href="/contact.html">Get a Quote for Plus Size Manufacturing →</a></div>
+</div>
+</section>
+
 <footer class="site">
   <div class="wrap">
     <div class="cols">
@@ -411,6 +440,39 @@ function openQV(el){
   document.getElementById('qvImg').alt=el.dataset.nm;
   document.getElementById('qvNo').textContent='STYLE '+el.dataset.no;
   document.getElementById('qvNm').textContent=el.dataset.nm;
+  document.getElementById('qvFob').textContent='FOB '+el.dataset.fob;
+  document.getElementById('qvFab').textContent=el.dataset.fab;
+  document.getElementById('qvMoq').textContent=el.dataset.moq+' pcs (test order)';
+  document.getElementById('qvWa').href='https://wa.me/8617750659112?text='+encodeURIComponent('Hello Shanlinyang, please quote style '+el.dataset.no+' ('+el.dataset.nm+').');
+  qv.classList.add('on');document.body.style.overflow='hidden';
+}
+function closeQV(){qv.classList.remove('on');document.body.style.overflow='';}
+document.querySelectorAll('.qv-open').forEach(function(el){
+  el.addEventListener('click',function(){openQV(el)});
+  el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openQV(el)}});
+});
+if(qv){document.getElementById('qvClose').onclick=closeQV;qv.addEventListener('click',function(e){if(e.target===qv)closeQV()});
+addEventListener('keydown',function(e){if(e.key==='Escape')closeQV()});}
+// filters
+var pills=document.querySelectorAll('.filterbar button');
+pills.forEach(function(b){b.onclick=function(){
+  pills.forEach(function(x){x.classList.remove('active')});b.classList.add('active');
+  var f=b.dataset.filter;
+  document.querySelectorAll('.pcard[data-tag]').forEach(function(c){
+    c.classList.toggle('hide', f!=='all' && c.dataset.tag!==f);});
+};});
+// count-up stats
+var ce=document.querySelectorAll('.stats b');
+if(ce.length){var io=new IntersectionObserver(function(en){en.forEach(function(x){
+  if(x.isIntersecting){var el=x.target;var t=el.textContent;var m=t.match(/[\d,]+/);
+  if(m){var n=parseInt(m[0].replace(/,/g,''));var suf=t.replace(m[0],'');var s=0,step=Math.max(1,Math.ceil(n/40));
+  var iv=setInterval(function(){s+=step;if(s>=n){s=n;clearInterval(iv)}el.textContent=s.toLocaleString()+suf;},22);}
+  io.unobserve(el);}});},{threshold:.5});ce.forEach(function(e){io.observe(e)});}
+})();
+</script>
+<script>(function(){var t=document.querySelector(".nav-toggle"),h=document.querySelector("header.site");if(t&&h)t.addEventListener("click",function(){var o=h.classList.toggle("nav-open");t.setAttribute("aria-expanded",o?"true":"false");});})();</script>
+</body>
+</html>t.getElementById('qvNm').textContent=el.dataset.nm;
   document.getElementById('qvFob').textContent='FOB '+el.dataset.fob;
   document.getElementById('qvFab').textContent=el.dataset.fab;
   document.getElementById('qvMoq').textContent=el.dataset.moq+' pcs (test order)';
