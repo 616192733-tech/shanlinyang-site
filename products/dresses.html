@@ -391,7 +391,7 @@
 <div class="filterbar" role="group" aria-label="Filter styles"><button data-filter="all" class="active">All</button><button data-filter="casual">Casual</button><button data-filter="occasion">Occasion</button><button data-filter="party">Party</button></div>
 <div class="grid-3" style="margin-top:1rem">
 <article class="pcard" data-tag="maxi">
-  <div class="ph qv-open" style="background:#fff" data-img="/img/prod/dresses/d9.jpg" data-no="SLY-2025-10" data-nm="Deep-V Halter Neck Maxi Dress" data-fob="US$8–15" data-fab="Polyester/Spandex · S–XL" data-moq="2" role="button" tabindex="0" aria-label="Quick view Deep-V Halter Neck Maxi Dress">
+  <div class="ph qv-open" style="background:#fff" data-img="/img/prod/dresses/d9.jpg" data-imgs="/img/prod/dresses/d9.jpg,/img/prod/dresses/d9b.jpg" data-no="SLY-2025-10" data-nm="Deep-V Halter Neck Maxi Dress" data-fob="US$8–15" data-fab="Polyester/Spandex · S–XL" data-moq="2" role="button" tabindex="0" aria-label="Quick view Deep-V Halter Neck Maxi Dress">
     <img src="/img/prod/dresses/d9.webp" alt="Deep-V halter neck maxi dress with high slit in sky blue, mint green and pink, evening gown by Shanlinyang Apparel" loading="lazy" width="420" height="525" style="width:100%;height:100%;object-fit:cover"></div>
   <div class="pi">
     <h3 class="pn">Deep-V Halter Neck Maxi Dress</h3>
@@ -556,7 +556,7 @@ els.forEach(function(e){io.observe(e)});})();
 </script>
 
 <div id="qv" role="dialog" aria-modal="true" aria-label="Product quick view"><span class="close" id="qvClose" role="button" tabindex="0" aria-label="Close">×</span>
-<div class="box"><img id="qvImg" src="" alt=""><div class="det">
+<div class="box"><div id="qvImgWrap" style="position:relative;overflow:hidden;min-height:340px;display:flex;align-items:stretch"><img id="qvImg" src="" alt="" style="width:100%;height:100%;object-fit:cover;min-height:340px;transition:opacity .35s"><button id="qvPrev" onclick="qvSlide(-1)" style="position:absolute;left:0;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.35);color:#fff;border:none;font-size:1.4rem;padding:.4rem .7rem;cursor:pointer;z-index:5;display:none">‹</button><button id="qvNext" onclick="qvSlide(1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.35);color:#fff;border:none;font-size:1.4rem;padding:.4rem .7rem;cursor:pointer;z-index:5;display:none">›</button><div id="qvDots" style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:6px"></div></div><div class="det">
 <span class="style-no" id="qvNo"></span><h3 id="qvNm"></h3><div class="price" id="qvFob"></div>
 <div class="table-scroll"><table><tr><td>Fabric</td><td id="qvFab"></td></tr><tr><td>Stock MOQ</td><td id="qvMoq"></td></tr><tr><td>Custom MOQ</td><td>100 pcs / color / style</td></tr><tr><td>Sampling</td><td>7–12 days</td></tr><tr><td>Logo</td><td>Print · embroidery · woven label</td></tr></table></div>
 <div class="acts"><a class="btn btn--wa" id="qvWa" href="https://wa.me/8617750659112?text=Hello%20Shanlinyang%2C%20I%27d%20like%20a%20quote%20for%20custom%20women%27s%20clothing." rel="noopener">Quote this style on WhatsApp</a><a class="btn btn--ghost" href="/contact.html">Send an inquiry form</a></div>
@@ -569,9 +569,36 @@ var sb=document.getElementById('scrollbar');
 if(sb)addEventListener('scroll',function(){var h=document.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;sb.style.width=p+'%';},{passive:true});
 // quick view
 var qv=document.getElementById('qv');
+var qvImgs=[],qvIdx=0;
+function qvSetSlide(i){
+  if(!qvImgs.length)return;
+  qvIdx=(i+qvImgs.length)%qvImgs.length;
+  var img=document.getElementById('qvImg');
+  img.style.opacity=0;
+  setTimeout(function(){img.src=qvImgs[qvIdx];img.style.opacity=1;},180);
+  document.querySelectorAll('#qvDots span').forEach(function(d,n){d.style.background=n===qvIdx?'#fff':'rgba(255,255,255,.45)';});
+}
+function qvSlide(dir){qvSetSlide(qvIdx+dir);}
 function openQV(el){
-  document.getElementById('qvImg').src=el.dataset.img;
-  document.getElementById('qvImg').alt=el.dataset.nm;
+  var imgsStr=el.dataset.imgs||el.dataset.img;
+  qvImgs=imgsStr.split(',').map(function(s){return s.trim();});
+  qvIdx=0;
+  var img=document.getElementById('qvImg');
+  img.src=qvImgs[0];img.alt=el.dataset.nm;
+  // dots
+  var dots=document.getElementById('qvDots');
+  dots.innerHTML='';
+  var prev=document.getElementById('qvPrev'),next=document.getElementById('qvNext');
+  if(qvImgs.length>1){
+    qvImgs.forEach(function(_,n){var s=document.createElement('span');s.style.cssText='display:inline-block;width:7px;height:7px;border-radius:50%;background:'+(n===0?'#fff':'rgba(255,255,255,.45)')+';cursor:pointer';s.onclick=function(){qvSetSlide(n);};dots.appendChild(s);});
+    prev.style.display='block';next.style.display='block';
+    // auto slideshow
+    if(qv._timer)clearInterval(qv._timer);
+    qv._timer=setInterval(function(){if(qv.classList.contains('on'))qvSlide(1);},3000);
+  } else {
+    prev.style.display='none';next.style.display='none';
+    if(qv._timer)clearInterval(qv._timer);
+  }
   document.getElementById('qvNo').textContent='STYLE '+el.dataset.no;
   document.getElementById('qvNm').textContent=el.dataset.nm;
   document.getElementById('qvFob').textContent='FOB '+el.dataset.fob;
@@ -580,7 +607,7 @@ function openQV(el){
   document.getElementById('qvWa').href='https://wa.me/8617750659112?text='+encodeURIComponent('Hello Shanlinyang, please quote style '+el.dataset.no+' ('+el.dataset.nm+').');
   qv.classList.add('on');document.body.style.overflow='hidden';
 }
-function closeQV(){qv.classList.remove('on');document.body.style.overflow='';}
+function closeQV(){qv.classList.remove('on');document.body.style.overflow='';if(qv._timer)clearInterval(qv._timer);}
 document.querySelectorAll('.qv-open').forEach(function(el){
   el.addEventListener('click',function(){openQV(el)});
   el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openQV(el)}});
