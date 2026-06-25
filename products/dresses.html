@@ -331,6 +331,15 @@
   ]
 }
 </script>
+<style>
+#qv .box{display:grid;grid-template-columns:1fr 1fr}
+#qvImgWrap{position:relative;overflow:hidden;min-height:340px;display:flex;align-items:stretch;background:#0E1014}
+#qvImg{width:100%;height:100%;object-fit:cover;min-height:340px;transition:opacity .35s;display:block}
+#qvPrev,#qvNext{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:none;font-size:1.6rem;padding:.5rem .8rem;cursor:pointer;z-index:10;border-radius:3px;line-height:1}
+#qvPrev{left:8px}
+#qvNext{right:8px}
+#qvDots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:10}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
