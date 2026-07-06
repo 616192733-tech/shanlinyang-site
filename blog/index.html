@@ -43,7 +43,7 @@
 <!-- Google Analytics 4 — 替换 G-XXXXXXXXXX 为你 analytics.google.com 的实际 Measurement ID -->
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"CollectionPage","name":"Clothing Manufacturing Blog — Shanlinyang Apparel","description":"Expert guides on private label clothing manufacturing, sourcing from China, activewear production, and building a fashion brand. 175+ articles.","url":"https://www.shanlinyang.com/blog/","publisher":{"@type":"Organization","name":"Shanlinyang Apparel","url":"https://www.shanlinyang.com"}}
+{"@context":"https://schema.org","@type":"CollectionPage","name":"Clothing Manufacturing Blog — Shanlinyang Apparel","description":"Expert guides on private label clothing manufacturing, sourcing from China, activewear production, and building a fashion brand. 196 articles.","url":"https://www.shanlinyang.com/blog/","publisher":{"@type":"Organization","name":"Shanlinyang Apparel","url":"https://www.shanlinyang.com"}}
 </script>
 </head>
 <body>
@@ -308,6 +308,35 @@ if(ce.length){var io=new IntersectionObserver(function(en){en.forEach(function(x
 <script>(function(){var t=document.querySelector(".nav-toggle"),h=document.querySelector("header.site");if(t&&h)t.addEventListener("click",function(){var o=h.classList.toggle("nav-open");t.setAttribute("aria-expanded",o?"true":"false");});})();</script>
 </body>
 </html>lementById('qvWa').href='https://wa.me/8617750659112?text='+encodeURIComponent('Hello Shanlinyang, please quote style '+el.dataset.no+' ('+el.dataset.nm+').');
+  qv.classList.add('on');document.body.style.overflow='hidden';
+}
+function closeQV(){qv.classList.remove('on');document.body.style.overflow='';}
+document.querySelectorAll('.qv-open').forEach(function(el){
+  el.addEventListener('click',function(){openQV(el)});
+  el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openQV(el)}});
+});
+if(qv){document.getElementById('qvClose').onclick=closeQV;qv.addEventListener('click',function(e){if(e.target===qv)closeQV()});
+addEventListener('keydown',function(e){if(e.key==='Escape')closeQV()});}
+// filters
+var pills=document.querySelectorAll('.filterbar button');
+pills.forEach(function(b){b.onclick=function(){
+  pills.forEach(function(x){x.classList.remove('active')});b.classList.add('active');
+  var f=b.dataset.filter;
+  document.querySelectorAll('.pcard[data-tag]').forEach(function(c){
+    c.classList.toggle('hide', f!=='all' && c.dataset.tag!==f);});
+};});
+// count-up stats
+var ce=document.querySelectorAll('.stats b');
+if(ce.length){var io=new IntersectionObserver(function(en){en.forEach(function(x){
+  if(x.isIntersecting){var el=x.target;var t=el.textContent;var m=t.match(/[\d,]+/);
+  if(m){var n=parseInt(m[0].replace(/,/g,''));var suf=t.replace(m[0],'');var s=0,step=Math.max(1,Math.ceil(n/40));
+  var iv=setInterval(function(){s+=step;if(s>=n){s=n;clearInterval(iv)}el.textContent=s.toLocaleString()+suf;},22);}
+  io.unobserve(el);}});},{threshold:.5});ce.forEach(function(e){io.observe(e)});}
+})();
+</script>
+<script>(function(){var t=document.querySelector(".nav-toggle"),h=document.querySelector("header.site");if(t&&h)t.addEventListener("click",function(){var o=h.classList.toggle("nav-open");t.setAttribute("aria-expanded",o?"true":"false");});})();</script>
+</body>
+</html>qvWa').href='https://wa.me/8617750659112?text='+encodeURIComponent('Hello Shanlinyang, please quote style '+el.dataset.no+' ('+el.dataset.nm+').');
   qv.classList.add('on');document.body.style.overflow='hidden';
 }
 function closeQV(){qv.classList.remove('on');document.body.style.overflow='';}
