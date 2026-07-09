@@ -123,6 +123,9 @@
 <form class="inquiry" action="https://api.web3forms.com/submit" method="POST">
   <input type="hidden" name="access_key" value="2b593a98-2772-42a7-bd0b-0dcc0367d4f1">
   <input type="hidden" name="subject" value="New inquiry from shanlinyang.com">
+<input type="hidden" name="source_page" id="source-page" value="direct">
+<input type="hidden" name="source_market" id="source-market" value="unspecified">
+<input type="hidden" name="landing_page" id="landing-page" value="/contact.html">
   <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
   <div class="row">
     <div><label for="f-name">Your name *</label><input id="f-name" name="name" required autocomplete="name"></div>
@@ -270,13 +273,15 @@ if(ce.length){var io=new IntersectionObserver(function(en){en.forEach(function(x
 <script>
 /* inquiry form: AJAX submit -> inline success; graceful fallback to email/WhatsApp */
 (function(){var f=document.querySelector('form.inquiry');if(!f)return;
+var p=new URLSearchParams(location.search);document.getElementById('source-page').value=document.referrer||'direct';document.getElementById('source-market').value=p.get('market')||'unspecified';document.getElementById('landing-page').value=location.pathname+location.search;
 f.addEventListener('submit',function(e){e.preventDefault();
 var b=f.querySelector('button[type=submit]'),o=b.textContent;b.disabled=true;b.textContent='Sending\u2026';
 fetch(f.action,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)})
 .then(function(r){return r.json();}).then(function(j){if(j.success){
+window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'generate_lead',form_name:'quote_request',source_market:document.getElementById('source-market').value});
 f.innerHTML='<div class="form-ok"><b>\u2713 Thank you \u2014 your inquiry is in.</b><br>We reply with pricing, MOQ and lead time within one business day. For anything urgent, message us on WhatsApp at +86 177 5065 9112.</div>';
 }else{throw new Error(j.message||'error');}})
-.catch(function(){b.disabled=false;b.textContent=o;if(f.querySelector('.form-err'))return;
+.catch(function(){b.disabled=false;b.textContent=o;window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'form_error',form_name:'quote_request'});if(f.querySelector('.form-err'))return;
 var n=document.createElement('div');n.className='form-err';
 n.innerHTML='Sorry \u2014 the form could not send just now. Please email <a href="mailto:616192733@qq.com">616192733@qq.com</a> or <a href="https://wa.me/8617750659112" rel="noopener">message us on WhatsApp</a>.';
 b.parentNode.insertBefore(n,b.nextSibling);});});})();
