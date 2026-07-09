@@ -1,0 +1,44 @@
+name: Contact page cleanup
+
+on:
+  push:
+    branches: [agent/seo-conversion-cleanup]
+    paths: [.github/workflows/contact-cleanup.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/seo-conversion-cleanup
+      - name: Apply contact page fixes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('contact.html')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('"email": "info@shanlinyang.com"', '"email": "616192733@qq.com"')
+          text = text.replace("we'll reply from sales@ so you can attach files directly.", "we'll reply by email so you can attach files directly.")
+          duplicate = '''<script type="application/ld+json">
+          {"@context":"https://schema.org","@type":"ContactPage","name":"Get a Factory Quote — Shanlinyang Apparel","url":"https://www.shanlinyang.com/contact.html","description":"Request a free factory quote for private label women's clothing manufacturing. Custom activewear, dresses, swimwear and more from 100 pieces MOQ.","mainEntity":{"@type":"Organization","name":"Shanlinyang Apparel","telephone":"+86-177-5065-9112"}}
+          </script>
+          '''
+          text = text.replace(duplicate, '')
+          p.write_text(text, encoding='utf-8')
+          PY
+      - name: Verify cleanup
+        run: |
+          test "$(grep -c '"@type": "ContactPage"' contact.html)" -eq 1
+          ! grep -q 'info@shanlinyang.com\|reply from sales@' contact.html
+      - name: Commit fixes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add contact.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Clean up contact page metadata and email copy"
+          git push
