@@ -3,7 +3,9 @@ name: Contact page cleanup
 on:
   push:
     branches: [agent/seo-conversion-cleanup]
-    paths: [.github/workflows/contact-cleanup.yml]
+    paths:
+      - ".github/workflows/contact-cleanup.yml"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -19,20 +21,24 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
+
           p = Path('contact.html')
           text = p.read_text(encoding='utf-8')
           text = text.replace('"email": "info@shanlinyang.com"', '"email": "616192733@qq.com"')
           text = text.replace("we'll reply from sales@ so you can attach files directly.", "we'll reply by email so you can attach files directly.")
-          duplicate = '''<script type="application/ld+json">
-          {"@context":"https://schema.org","@type":"ContactPage","name":"Get a Factory Quote — Shanlinyang Apparel","url":"https://www.shanlinyang.com/contact.html","description":"Request a free factory quote for private label women's clothing manufacturing. Custom activewear, dresses, swimwear and more from 100 pieces MOQ.","mainEntity":{"@type":"Organization","name":"Shanlinyang Apparel","telephone":"+86-177-5065-9112"}}
-          </script>
-          '''
-          text = text.replace(duplicate, '')
+          text = re.sub(
+              r'(<!-- Google Analytics 4.*?-->)\s*<script type="application/ld\+json">\s*\{"@context":"https://schema.org","@type":"ContactPage".*?</script>',
+              r'\1',
+              text,
+              count=1,
+              flags=re.S,
+          )
           p.write_text(text, encoding='utf-8')
           PY
       - name: Verify cleanup
         run: |
-          test "$(grep -c '"@type": "ContactPage"' contact.html)" -eq 1
+          test "$(grep -Ec '"@type"[[:space:]]*:[[:space:]]*"ContactPage"' contact.html)" -eq 1
           ! grep -q 'info@shanlinyang.com\|reply from sales@' contact.html
       - name: Commit fixes
         run: |
