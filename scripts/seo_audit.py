@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import json
 import re
 import sys
 from collections import Counter
@@ -8,7 +9,15 @@ from pathlib import Path
 from xml.etree import ElementTree
 
 ROOT = Path(__file__).resolve().parents[1]
-HTML_FILES = sorted(p for p in ROOT.rglob("*.html") if ".git" not in p.parts)
+REDIRECT_SOURCE_PATHS = {
+    Path("blog/clothing-manufacturer-ireland.html"),
+    Path("blog/clothing-factory-payment-protection.html"),
+}
+HTML_FILES = sorted(
+    p
+    for p in ROOT.rglob("*.html")
+    if ".git" not in p.parts and p.relative_to(ROOT) not in REDIRECT_SOURCE_PATHS
+)
 ERRORS: list[str] = []
 WARNINGS: list[str] = []
 CANONICALS: dict[str, Path] = {}
@@ -20,6 +29,31 @@ def one(pattern: str, text: str, flags: int = re.I | re.S) -> str | None:
     return match.group(1).strip() if match else None
 
 
+def schema_types(text: str, rel: Path) -> list[str]:
+    types: list[str] = []
+    blocks = re.findall(
+        r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
+        text,
+        re.I | re.S,
+    )
+    for index, block in enumerate(blocks, start=1):
+        try:
+            data = json.loads(block)
+        except json.JSONDecodeError as exc:
+            ERRORS.append(f"{rel}: invalid JSON-LD block {index}: {exc.msg}")
+            continue
+        nodes = data if isinstance(data, list) else [data]
+        for node in nodes:
+            if not isinstance(node, dict):
+                continue
+            schema_type = node.get("@type")
+            if isinstance(schema_type, list):
+                types.extend(str(item) for item in schema_type)
+            elif schema_type:
+                types.append(str(schema_type))
+    return types
+
+
 for path in HTML_FILES:
     rel = path.relative_to(ROOT)
     text = path.read_text(encoding="utf-8", errors="replace")
@@ -27,7 +61,6 @@ for path in HTML_FILES:
     description = one(r'<meta[^>]+name=["\']description["\'][^>]+content=["\'](.*?)["\']', text)
     canonical = one(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\'](.*?)["\']', text)
     h1_count = len(re.findall(r"<h1\b", text, re.I))
-    jsonld_count = len(re.findall(r'application/ld\+json', text, re.I))
 
     if not title:
         ERRORS.append(f"{rel}: missing <title>")
@@ -49,8 +82,14 @@ for path in HTML_FILES:
         CANONICALS[canonical] = rel
     if h1_count != 1:
         ERRORS.append(f"{rel}: expected 1 H1, found {h1_count}")
-    if jsonld_count > 4:
-        WARNINGS.append(f"{rel}: review {jsonld_count} JSON-LD blocks for duplication")
+
+    duplicate_schema_types = {
+        schema_type: count
+        for schema_type, count in Counter(schema_types(text, rel)).items()
+        if count > 1
+    }
+    for schema_type, count in sorted(duplicate_schema_types.items()):
+        WARNINGS.append(f"{rel}: {count} top-level {schema_type} JSON-LD blocks; consolidate duplicates")
 
 for title, count in Counter(t for t, _ in TITLES).items():
     if count > 1:
