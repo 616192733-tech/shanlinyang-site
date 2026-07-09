@@ -1,0 +1,90 @@
+name: Strengthen regional page hierarchy
+
+on:
+  push:
+    branches: [agent/seo-conversion-cleanup]
+    paths:
+      - ".github/workflows/market-hierarchy-cleanup.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-markets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/seo-conversion-cleanup
+      - name: Add market hub to breadcrumbs and footers
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          pages = {
+              'markets/us-clothing-manufacturer.html': 'US Clothing Manufacturing',
+              'markets/canada-clothing-manufacturer.html': 'Canada Clothing Manufacturing',
+              'markets/europe-clothing-manufacturer.html': 'Europe Clothing Manufacturing',
+          }
+
+          for filename, page_name in pages.items():
+              path = Path(filename)
+              text = path.read_text(encoding='utf-8')
+
+              old_json = f'{{"@type":"ListItem","position":2,"name":"{page_name}"}}'
+              new_json = (
+                  '{"@type":"ListItem","position":2,"name":"Markets",'
+                  '"item":"https://www.shanlinyang.com/markets/"},'
+                  f'{{"@type":"ListItem","position":3,"name":"{page_name}"}}'
+              )
+              if old_json not in text and '"position":3' not in text:
+                  raise SystemExit(f'{filename}: expected breadcrumb JSON marker not found')
+              text = text.replace(old_json, new_json, 1)
+
+              visible_variants = [
+                  f'<ol><li><a href="/">Home</a></li><li aria-current="page">{page_name}</li></ol>',
+                  f'<ol><li><a href="/">Home</a></li><li>{page_name}</li></ol>',
+              ]
+              new_visible = (
+                  f'<ol><li><a href="/">Home</a></li><li><a href="/markets/">Markets</a></li>'
+                  f'<li aria-current="page">{page_name}</li></ol>'
+              )
+              if '<li><a href="/markets/">Markets</a></li>' not in text:
+                  replaced = False
+                  for old_visible in visible_variants:
+                      if old_visible in text:
+                          text = text.replace(old_visible, new_visible, 1)
+                          replaced = True
+                          break
+                  if not replaced:
+                      raise SystemExit(f'{filename}: expected visible breadcrumb marker not found')
+
+              footer_marker = '<a href="/contact.html">Contact the factory</a></p>'
+              if 'Regional sourcing guides' not in text:
+                  if footer_marker not in text:
+                      raise SystemExit(f'{filename}: expected footer marker not found')
+                  text = text.replace(
+                      footer_marker,
+                      '<a href="/contact.html">Contact the factory</a> · '
+                      '<a href="/markets/">Regional sourcing guides</a></p>',
+                      1,
+                  )
+
+              path.write_text(text, encoding='utf-8')
+          PY
+      - name: Verify SEO hierarchy
+        run: |
+          python scripts/seo_audit.py
+          for page in markets/*-clothing-manufacturer.html; do
+            grep -q 'https://www.shanlinyang.com/markets/' "$page"
+            grep -q 'Regional sourcing guides' "$page"
+          done
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add markets
+          git diff --cached --quiet && exit 0
+          git commit -m "Strengthen regional page hierarchy and internal links"
+          git push
