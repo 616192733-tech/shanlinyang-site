@@ -1,13 +1,12 @@
 name: SEO audit
 
 on:
-  pull_request:
-    branches: [main]
   push:
     branches: [main, agent/seo-conversion-cleanup]
+  workflow_dispatch:
 
 concurrency:
-  group: seo-audit-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  group: seo-audit-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
