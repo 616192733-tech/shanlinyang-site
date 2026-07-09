@@ -1,4 +1,4 @@
-name: Normalize product schema
+name: Normalize product and organization schema
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: agent/seo-conversion-cleanup
-      - name: Add product images and normalize offer counts
+      - name: Normalize product and organization entities
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -39,7 +39,7 @@ jobs:
               )
               image = og.group(1).strip() if og else None
 
-              def update(match):
+              def update_product(match):
                   try:
                       data = json.loads(match.group(2))
                   except json.JSONDecodeError:
@@ -63,10 +63,46 @@ jobs:
                   changed.append(str(path))
                   return match.group(1) + '\n' + json.dumps(data, ensure_ascii=False, indent=2) + '\n' + match.group(3)
 
-              updated = pattern.sub(update, text)
-              path.write_text(updated, encoding='utf-8')
+              path.write_text(pattern.sub(update_product, text), encoding='utf-8')
 
-          print('\n'.join(sorted(set(changed))) if changed else 'No Product schema changes needed')
+          home = Path('index.html')
+          home_text = home.read_text(encoding='utf-8')
+
+          def update_home(match):
+              try:
+                  data = json.loads(match.group(2))
+              except json.JSONDecodeError:
+                  return match.group(0)
+              if not isinstance(data, dict):
+                  return match.group(0)
+              schema_type = data.get('@type')
+              types = schema_type if isinstance(schema_type, list) else [schema_type]
+              modified = False
+              if 'Organization' in types:
+                  additions = {
+                      '@id': 'https://www.shanlinyang.com/#org',
+                      'legalName': 'Xiamen Shan Lin Yang Trading Co., Ltd.',
+                      'email': '616192733@qq.com',
+                      'telephone': '+86-177-5065-9112',
+                  }
+                  for key, value in additions.items():
+                      if data.get(key) != value:
+                          data[key] = value
+                          modified = True
+                  if isinstance(data.get('contactPoint'), dict) and not data['contactPoint'].get('email'):
+                      data['contactPoint']['email'] = '616192733@qq.com'
+                      modified = True
+              if schema_type == 'VideoObject' and isinstance(data.get('publisher'), dict):
+                  if data['publisher'] != {'@id': 'https://www.shanlinyang.com/#org'}:
+                      data['publisher'] = {'@id': 'https://www.shanlinyang.com/#org'}
+                      modified = True
+              if not modified:
+                  return match.group(0)
+              changed.append('index.html')
+              return match.group(1) + '\n' + json.dumps(data, ensure_ascii=False, indent=2) + '\n' + match.group(3)
+
+          home.write_text(pattern.sub(update_home, home_text), encoding='utf-8')
+          print('\n'.join(sorted(set(changed))) if changed else 'No schema changes needed')
           PY
       - name: Verify schema
         run: |
@@ -87,12 +123,17 @@ jobs:
                   offers = data.get('offers', {})
                   if isinstance(offers, dict) and isinstance(offers.get('offerCount'), str):
                       raise SystemExit(f'{path}: offerCount must be numeric')
+
+          home_nodes = [json.loads(block) for block in pattern.findall(Path('index.html').read_text(encoding='utf-8'))]
+          ids = {node.get('@id') for node in home_nodes if isinstance(node, dict) and node.get('@id')}
+          if 'https://www.shanlinyang.com/#org' not in ids:
+              raise SystemExit('Homepage Organization schema is missing #org ID')
           PY
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add products
+          git add index.html products
           git diff --cached --quiet && exit 0
-          git commit -m "Normalize product structured data"
+          git commit -m "Normalize product and organization structured data"
           git push
