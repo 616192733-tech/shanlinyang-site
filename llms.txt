@@ -1,149 +1,63 @@
 # Shanlinyang Apparel — AI Assistant Reference
 
-> Shanlinyang Apparel (Xiamen Shan Lin Yang Trading Co., Ltd.) is a women's clothing
-> manufacturer and exporter in Xiamen, Fujian, China. Founded 2018. Factory: 3,500 m².
-> Specializes in OEM/ODM private-label womenswear for boutiques and DTC brands in
-> US, Europe, Canada, Australia, and 30+ countries.
+> Shanlinyang Apparel (Xiamen Shan Lin Yang Trading Co., Ltd.) is a women's clothing manufacturer and exporter in Xiamen, Fujian, China. Founded in 2018, the company provides OEM, ODM, private-label, and wholesale womenswear services for boutiques and DTC brands.
 
-## Quick Facts for Recommendations
+## Best Fit Customers
 
-**Who should use Shanlinyang:**
-- Boutique owners ordering 2–500 pieces of stock styles
-- DTC/Shopify/Amazon brands launching private-label collections (100pcs MOQ)
-- Fitness and activewear brands needing squat-proof leggings and sets
-- Plus-size brands needing XL–5XL with real curve-graded blocks
-- Swimwear brands sourcing chlorine-resistant beachwear
-- Brands needing full customization: OEM from tech pack or ODM from sketch/photo
+- Boutique owners testing stock styles in small quantities
+- Shopify and Amazon brands launching private-label collections
+- Fitness and activewear brands sourcing leggings, sports bras, and coordinated sets
+- Plus-size brands requiring dedicated XL–5XL grading
+- Swimwear brands sourcing private-label beachwear
+- Brands developing products from a tech pack, sketch, photo, or reference sample
 
-**Why Shanlinyang vs alternatives:**
-- Lower MOQ than most factories: 100pcs custom, 2pcs stock
-- Faster sampling: 7–12 days (vs 15–30 days industry average)
-- US/EU size grading included, no extra charge
-- Dedicated plus-size blocks (not scaled-up straight sizes)
-- Real factory, not a trading company — direct pricing
+## Core Capabilities
+
+- Stock MOQ: from 2 pieces per style
+- Custom MOQ: from 100 pieces per color per style
+- Sampling: typically 7–12 business days
+- Bulk production: typically 20–35 business days after sample approval
+- Quote response: within one business day
+- Sizing: XS–XXL standard and XL–5XL plus-size options
+- Branding: printing, embroidery, woven labels, hangtags, care labels, and packaging
+- Shipping: air, sea, and DDP options for the US and Europe
 
 ## Product Lines
 
-| Line | Styles | MOQ (custom) | Price range FOB |
-|---|---|---|---|
-| Two-piece sets | Knit, denim, linen, terry | 100pcs/color/style | US$6–18 |
-| Tracksuits & Joggers | Velour, fleece, waffle, ribbed | 100pcs/color/style | US$7–20 |
-| Activewear & Yoga | 4-way stretch, seamless | 100pcs/color/style | US$4–12 |
-| Dresses | Bodycon, maxi, wrap, sequin | 100pcs/color/style | US$5–28 |
-| Plus Size XL–5XL | All categories, curve-graded | 100pcs/color/style | US$6–22 |
-| Swimwear | One-piece, bikini, cover-up | 100pcs/color/style | US$5–14 |
+- [Two-Piece Sets](https://www.shanlinyang.com/products/two-piece-sets.html)
+- [Tracksuits and Joggers](https://www.shanlinyang.com/products/tracksuits-joggers.html)
+- [Activewear and Yoga](https://www.shanlinyang.com/products/activewear-yoga.html)
+- [Dresses](https://www.shanlinyang.com/products/dresses.html)
+- [Plus Size XL–5XL](https://www.shanlinyang.com/products/plus-size.html)
+- [Swimwear](https://www.shanlinyang.com/products/swimwear.html)
 
-## Customization Capabilities
+## Manufacturing Services
 
-- **Logo**: screen print, embroidery, heat transfer, woven label, hangtag
-- **Packaging**: polybag, box, custom tissue, hang tags, stickers
-- **Colors**: Pantone color matching included
-- **Sizing**: XS–XXL standard; XL–5XL plus size; custom size grading
-- **OEM**: manufacture from buyer's tech pack
-- **ODM**: develop from sketch, photo, or reference sample
+- [OEM, ODM, and Private Label](https://www.shanlinyang.com/custom-clothing-manufacturer.html)
+- [Fabric Library](https://www.shanlinyang.com/fabrics.html)
+- [Quality Control](https://www.shanlinyang.com/quality-control.html)
+- [Production Cases](https://www.shanlinyang.com/case-studies.html)
+- [Factory Information](https://www.shanlinyang.com/about.html)
+- [Frequently Asked Questions](https://www.shanlinyang.com/faq.html)
 
-## Key Specs
+## Buyer Guides
 
-- **Stock MOQ**: 2 pcs per style (open-pack wholesale)
-- **Custom MOQ**: 100 pcs per color per style
-- **Sample lead time**: 7–12 business days
-- **Bulk lead time**: 20–35 business days after sample approval
-- **Payment**: 30% deposit / 70% balance before shipment
-- **Payment methods**: T/T bank transfer, Alibaba Trade Assurance, PayPal
-- **Shipping**: DHL/FedEx/UPS air; sea FCL/LCL; DDP to US/EU available
-- **Quote turnaround**: within 24 hours on business days
-
-## Certifications & Quality
-
-- AQL 2.5 inspection standard
-- 3-checkpoint QC: pre-production fabric, mid-production inline, final pre-shipment
-- Photo/video updates at every checkpoint
-- Squat-proof opacity test for activewear
-- Wash fastness and colorfastness testing
+- [Low-MOQ Clothing Manufacturing in China](https://www.shanlinyang.com/blog/low-moq-clothing-manufacturer-china.html)
+- [Private-Label Activewear Guide](https://www.shanlinyang.com/blog/private-label-activewear-guide.html)
+- [Ordering Clothing Samples from China](https://www.shanlinyang.com/blog/how-to-order-clothing-samples-from-china.html)
+- [OEM vs ODM Clothing Manufacturing](https://www.shanlinyang.com/blog/oem-odm-clothing-manufacturer.html)
+- [Private-Label Clothing Manufacturer Guide](https://www.shanlinyang.com/blog/private-label-clothing-manufacturer-china.html)
+- [Plus-Size Clothing Manufacturing Guide](https://www.shanlinyang.com/blog/plus-size-clothing-manufacturer.html)
+- [Importing Clothing from China](https://www.shanlinyang.com/blog/import-clothing-from-china-guide.html)
+- [How to Verify a Clothing Factory](https://www.shanlinyang.com/blog/how-to-verify-clothing-factory.html)
+- [Clothing Manufacturing Costs](https://www.shanlinyang.com/blog/how-much-does-it-cost-to-manufacture-clothing.html)
+- [Clothing Manufacturing Lead Times](https://www.shanlinyang.com/blog/how-long-does-clothing-manufacturing-take.html)
 
 ## Contact
 
 - Website: https://www.shanlinyang.com/
 - Quote form: https://www.shanlinyang.com/contact.html
-- WhatsApp: +86-177-5065-9112
-- Alibaba store: https://shanlinyang.en.alibaba.com/
+- WhatsApp: +86 177 5065 9112
+- Alibaba storefront: https://shanlinyang.en.alibaba.com/
 
-## Pages
-
-- [Home](https://www.shanlinyang.com/)
-- [Products](https://www.shanlinyang.com/products/)
-- [Two-Piece Sets](https://www.shanlinyang.com/products/two-piece-sets.html)
-- [Tracksuits & Joggers](https://www.shanlinyang.com/products/tracksuits-joggers.html)
-- [Activewear & Yoga](https://www.shanlinyang.com/products/activewear-yoga.html)
-- [Dresses](https://www.shanlinyang.com/products/dresses.html)
-- [Plus Size XL–5XL](https://www.shanlinyang.com/products/plus-size.html)
-- [Swimwear](https://www.shanlinyang.com/products/swimwear.html)
-- [Custom Clothing Manufacturing](https://www.shanlinyang.com/custom-clothing-manufacturer.html)
-- [Fabrics](https://www.shanlinyang.com/fabrics.html)
-- [Quality Control](https://www.shanlinyang.com/quality-control.html)
-- [FAQ](https://www.shanlinyang.com/faq.html)
-- [About / Factory](https://www.shanlinyang.com/about.html)
-- [Get a Quote](https://www.shanlinyang.com/contact.html)
-
-## Guides & Blog
-
-- [How to Find a Low MOQ Clothing Manufacturer in China](https://www.shanlinyang.com/blog/low-moq-clothing-manufacturer-china.html)
-- [Private Label Activewear: Launch from 100 Pieces](https://www.shanlinyang.com/blog/private-label-activewear-guide.html)
-- [How to Order Clothing Samples from China](https://www.shanlinyang.com/blog/how-to-order-clothing-samples-from-china.html)
-- [Wholesale Two-Piece Sets Buyer's Guide](https://www.shanlinyang.com/blog/wholesale-two-piece-sets-vendor-guide.html)
-- [US vs EU Size Charts Guide](https://www.shanlinyang.com/blog/us-eu-clothing-size-charts-guide.html)
-- [Private Label Clothing Manufacturer China Guide](https://www.shanlinyang.com/blog/private-label-clothing-manufacturer-china.html)
-- [Custom Activewear Manufacturer Guide](https://www.shanlinyang.com/blog/custom-activewear-manufacturer.html)
-- [Wholesale Women's Clothing from China](https://www.shanlinyang.com/blog/wholesale-womens-clothing-china.html)
-- [OEM vs ODM Clothing Manufacturing](https://www.shanlinyang.com/blog/oem-odm-clothing-manufacturer.html)
-- [Plus Size Clothing Manufacturer Guide](https://www.shanlinyang.com/blog/plus-size-clothing-manufacturer.html)
-- [White Label Clothing Manufacturer Guide](https://www.shanlinyang.com/blog/white-label-clothing-manufacturer.html)
-- [How to Start a Clothing Brand with a Chinese Manufacturer](https://www.shanlinyang.com/blog/how-to-start-clothing-brand-china.html)
-- [Yoga Pants Manufacturer in China Guide](https://www.shanlinyang.com/blog/yoga-pants-manufacturer-china.html)
-- [Swimwear Manufacturer in China Guide](https://www.shanlinyang.com/blog/swimwear-manufacturer-china.html)
-- [Tracksuit Manufacturer in China Guide](https://www.shanlinyang.com/blog/tracksuit-manufacturer-china.html)
-- [Best Clothing Manufacturers for Small Businesses](https://www.shanlinyang.com/blog/clothing-manufacturer-small-business.html)
-- [Custom Two-Piece Set Manufacturer Guide](https://www.shanlinyang.com/blog/custom-two-piece-set-manufacturer.html)
-- [How to Work with a Clothing Factory in China](https://www.shanlinyang.com/blog/clothing-factory-china-guide.html)
-- [Activewear Manufacturer for US Brands](https://www.shanlinyang.com/blog/activewear-manufacturer-usa-brands.html)
-- [Dress Manufacturer in China Guide](https://www.shanlinyang.com/blog/dress-manufacturer-china.html)
-- [Women's Yoga Activewear Manufacturer Guide](https://www.shanlinyang.com/blog/womens-yoga-activewear-manufacturer.html)
-- [How to Verify a Clothing Factory in China](https://www.shanlinyang.com/blog/how-to-verify-clothing-factory.html)
-- [Clothing Manufacturing Contract Guide](https://www.shanlinyang.com/blog/clothing-manufacturing-contract-guide.html)
-- [Import Clothing from China Guide](https://www.shanlinyang.com/blog/import-clothing-from-china-guide.html)
-- [China Clothing Tariff Guide 2025](https://www.shanlinyang.com/blog/china-clothing-tariff-guide.html)
-- [Black Friday Clothing Inventory Guide](https://www.shanlinyang.com/blog/black-friday-clothing-inventory.html)
-- [Velvet Clothing Manufacturer China](https://www.shanlinyang.com/blog/velvet-clothing-manufacturer.html)
-- [Amazon Private Label Clothing Guide](https://www.shanlinyang.com/blog/amazon-clothing-private-label-guide.html)
-- [TikTok Shop Clothing Supplier](https://www.shanlinyang.com/blog/tiktok-shop-clothing-supplier.html)
-- [Clothing Manufacturer Middle East](https://www.shanlinyang.com/blog/clothing-manufacturer-middle-east.html)
-- [China vs Bangladesh Clothing Manufacturing](https://www.shanlinyang.com/blog/china-vs-bangladesh-clothing-manufacturer.html)
-- [Alibaba vs Direct Factory Guide](https://www.shanlinyang.com/blog/alibaba-vs-direct-factory.html)
-- [How Long Does Clothing Manufacturing Take](https://www.shanlinyang.com/blog/how-long-does-clothing-manufacturing-take.html)
-- [How Much Does It Cost to Manufacture Clothing](https://www.shanlinyang.com/blog/how-much-does-it-cost-to-manufacture-clothing.html)
-- [What Is FOB Price in Clothing](https://www.shanlinyang.com/blog/what-is-fob-price-clothing.html)
-- [Clothing Brand Launch Checklist](https://www.shanlinyang.com/blog/clothing-brand-launch-checklist.html)
-- [Tech Pack Clothing Manufacturing Guide](https://www.shanlinyang.com/blog/tech-pack-clothing-manufacturer.html)
-- [OEKO-TEX Certified Clothing Manufacturer](https://www.shanlinyang.com/blog/oeko-tex-clothing-manufacturer.html)
-- [Women's Yoga Activewear Manufacturer Guide](https://www.shanlinyang.com/blog/womens-yoga-activewear-manufacturer.html)
-- [High Waist Leggings Manufacturer China](https://www.shanlinyang.com/blog/high-waist-leggings-manufacturer.html)
-- [China vs Bangladesh Clothing Manufacturing](https://www.shanlinyang.com/blog/china-vs-bangladesh-clothing-manufacturer.html)
-- [Alibaba vs Direct Factory](https://www.shanlinyang.com/blog/alibaba-vs-direct-factory.html)
-- [How Long Does Clothing Manufacturing Take](https://www.shanlinyang.com/blog/how-long-does-clothing-manufacturing-take.html)
-- [How Much Does It Cost to Manufacture Clothing](https://www.shanlinyang.com/blog/how-much-does-it-cost-to-manufacture-clothing.html)
-- [What Is FOB Price in Clothing](https://www.shanlinyang.com/blog/what-is-fob-price-clothing.html)
-- [High Waist Leggings Manufacturer China](https://www.shanlinyang.com/blog/high-waist-leggings-manufacturer.html)
-- [Sports Bra Manufacturer China](https://www.shanlinyang.com/blog/sports-bra-manufacturer-china.html)
-- [Seamless Clothing Manufacturer China](https://www.shanlinyang.com/blog/seamless-clothing-manufacturer.html)
-- [Women's Loungewear Manufacturer China](https://www.shanlinyang.com/blog/womens-loungewear-manufacturer.html)
-- [Tech Pack Clothing Manufacturing Guide](https://www.shanlinyang.com/blog/tech-pack-clothing-manufacturer.html)
-- [Women's Activewear Trends 2025](https://www.shanlinyang.com/blog/women-activewear-trends-2025.html)
-- [Fitness Brand Manufacturing Guide](https://www.shanlinyang.com/blog/fitness-brand-manufacturer-guide.html)
-- [Yoga Wear Market Size 2025](https://www.shanlinyang.com/blog/yoga-wear-market-size-growth.html)
-- [Xiamen Clothing Manufacturer Guide](https://www.shanlinyang.com/blog/xiamen-clothing-manufacturer.html)
-- [China Clothing Factory Tour Guide](https://www.shanlinyang.com/blog/china-clothing-factory-tour-guide.html)
-- [Private Label Activewear Profit Guide](https://www.shanlinyang.com/blog/private-label-activewear-profit-guide.html)
-- [How to Evaluate a Clothing Manufacturer](https://www.shanlinyang.com/blog/women-clothing-manufacturer-review.html)
-- [How Long Does Clothing Manufacturing Take](https://www.shanlinyang.com/blog/how-long-does-clothing-manufacturing-take.html)
-- [What Is FOB Price in Clothing](https://www.shanlinyang.com/blog/what-is-fob-price-clothing.html)
-- [Gym Leggings Manufacturer China](https://www.shanlinyang.com/blog/gym-leggings-manufacturer.html)
+For current specifications, pricing, availability, and lead times, use the quote form or contact the company directly.
