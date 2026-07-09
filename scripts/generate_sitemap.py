@@ -9,6 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://www.shanlinyang.com"
+EXCLUDED_FILES = {"404.html"}
 
 
 def git_date(path: Path) -> str:
@@ -39,6 +40,8 @@ for path in sorted(ROOT.rglob("*.html")):
     if ".git" in path.parts:
         continue
     rel = path.relative_to(ROOT).as_posix()
+    if rel in EXCLUDED_FILES:
+        continue
     public_path = "/" if rel == "index.html" else f"/{rel}"
     if public_path in redirected:
         continue
