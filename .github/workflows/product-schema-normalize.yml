@@ -71,7 +71,23 @@ jobs:
       - name: Verify schema
         run: |
           python scripts/seo_audit.py
-          ! grep -R '"offerCount"[[:space:]]*:[[:space:]]*"[0-9][0-9]*+"' products
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          import re
+
+          pattern = re.compile(r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', re.I | re.S)
+          for path in Path('products').glob('*.html'):
+              for block in pattern.findall(path.read_text(encoding='utf-8')):
+                  data = json.loads(block)
+                  if not isinstance(data, dict) or data.get('@type') != 'Product':
+                      continue
+                  if not data.get('image'):
+                      raise SystemExit(f'{path}: Product schema has no image')
+                  offers = data.get('offers', {})
+                  if isinstance(offers, dict) and isinstance(offers.get('offerCount'), str):
+                      raise SystemExit(f'{path}: offerCount must be numeric')
+          PY
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
