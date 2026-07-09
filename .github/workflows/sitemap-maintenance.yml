@@ -4,11 +4,15 @@ on:
   push:
     branches: [agent/seo-conversion-cleanup]
     paths:
-      - "**.html"
+      - "**/*.html"
       - "vercel.json"
       - "scripts/generate_sitemap.py"
       - ".github/workflows/sitemap-maintenance.yml"
   workflow_dispatch:
+
+concurrency:
+  group: sitemap-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: write
