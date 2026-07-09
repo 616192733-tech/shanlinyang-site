@@ -1,0 +1,82 @@
+name: Normalize product schema
+
+on:
+  push:
+    branches: [agent/seo-conversion-cleanup]
+    paths:
+      - ".github/workflows/product-schema-normalize.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/seo-conversion-cleanup
+      - name: Add product images and normalize offer counts
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          import re
+
+          pattern = re.compile(
+              r'(<script[^>]+type=["\']application/ld\+json["\'][^>]*>)(.*?)(</script>)',
+              re.I | re.S,
+          )
+          changed = []
+
+          for path in sorted(Path('products').glob('*.html')):
+              text = path.read_text(encoding='utf-8')
+              og = re.search(
+                  r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\'](.*?)["\']',
+                  text,
+                  re.I | re.S,
+              )
+              image = og.group(1).strip() if og else None
+
+              def update(match):
+                  try:
+                      data = json.loads(match.group(2))
+                  except json.JSONDecodeError:
+                      return match.group(0)
+                  if not isinstance(data, dict) or data.get('@type') != 'Product':
+                      return match.group(0)
+                  modified = False
+                  if image and not data.get('image'):
+                      data['image'] = image
+                      modified = True
+                  offers = data.get('offers')
+                  if isinstance(offers, dict) and 'offerCount' in offers:
+                      digits = re.sub(r'\D', '', str(offers['offerCount']))
+                      if digits:
+                          value = int(digits)
+                          if offers['offerCount'] != value:
+                              offers['offerCount'] = value
+                              modified = True
+                  if not modified:
+                      return match.group(0)
+                  changed.append(str(path))
+                  return match.group(1) + '\n' + json.dumps(data, ensure_ascii=False, indent=2) + '\n' + match.group(3)
+
+              updated = pattern.sub(update, text)
+              path.write_text(updated, encoding='utf-8')
+
+          print('\n'.join(sorted(set(changed))) if changed else 'No Product schema changes needed')
+          PY
+      - name: Verify schema
+        run: |
+          python scripts/seo_audit.py
+          ! grep -R '"offerCount"[[:space:]]*:[[:space:]]*"[0-9][0-9]*+"' products
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add products
+          git diff --cached --quiet && exit 0
+          git commit -m "Normalize product structured data"
+          git push
