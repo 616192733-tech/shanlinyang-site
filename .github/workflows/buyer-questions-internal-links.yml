@@ -1,0 +1,72 @@
+name: Add buyer questions internal links
+
+on:
+  push:
+    branches: [agent/seo-conversion-cleanup]
+    paths:
+      - ".github/workflows/buyer-questions-internal-links.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/seo-conversion-cleanup
+      - name: Add internal links
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def write_if_changed(path: str, old: str, new: str) -> bool:
+              p = Path(path)
+              text = p.read_text(encoding='utf-8')
+              if new in text:
+                  return False
+              if old not in text:
+                  raise SystemExit(f'Pattern not found in {path}: {old[:80]}')
+              p.write_text(text.replace(old, new, 1), encoding='utf-8')
+              return True
+
+          changed = False
+          changed |= write_if_changed(
+              'index.html',
+              '<li><a href="/faq.html">FAQ</a></li>\n      </ul>',
+              '<li><a href="/faq.html">FAQ</a></li>\n        <li><a href="/buyer-questions.html">Buyer Questions</a></li>\n      </ul>',
+          )
+          changed |= write_if_changed(
+              'index.html',
+              '<div style="background:#fff;padding:1.2rem;border-radius:6px;text-align:left"><strong style="font-size:.93rem;display:block;margin-bottom:.3rem">🏪 Wholesale Buyers</strong><span style="font-size:.83rem;color:#666">Stock catalog, quick turnaround, bulk pricing</span></div>\n</div>',
+              '<div style="background:#fff;padding:1.2rem;border-radius:6px;text-align:left"><strong style="font-size:.93rem;display:block;margin-bottom:.3rem">🏪 Wholesale Buyers</strong><span style="font-size:.83rem;color:#666">Stock catalog, quick turnaround, bulk pricing</span></div>\n<div style="background:#fff;padding:1.2rem;border-radius:6px;text-align:left"><strong style="font-size:.93rem;display:block;margin-bottom:.3rem">❓ Buyer Questions</strong><span style="font-size:.83rem;color:#666"><a href="/buyer-questions.html">MOQ, samples, DDP, FBA and QC answers</a></span></div>\n</div>',
+          )
+          changed |= write_if_changed(
+              'faq.html',
+              '<li><a href="/faq.html">FAQ</a></li>\n      </ul>',
+              '<li><a href="/faq.html">FAQ</a></li>\n            <li><a href="/buyer-questions.html">Buyer Questions</a></li>\n      </ul>',
+          )
+          changed |= write_if_changed(
+              'faq.html',
+              "Everything buyers ask before a first order — MOQ, customization, production, payment and shipping. Can't find your answer? <a href=\"/contact.html\">Ask us directly</a>; we reply within 24 hours.",
+              "Everything buyers ask before a first order — MOQ, customization, production, payment and shipping. Need a short sourcing summary? <a href=\"/buyer-questions.html\">Read the buyer questions page</a>. Can't find your answer? <a href=\"/contact.html\">Ask us directly</a>; we reply within 24 hours.",
+          )
+          if changed:
+              print('Internal links added')
+          else:
+              print('Internal links already present')
+          PY
+      - name: Commit internal links
+        run: |
+          if git diff --quiet -- index.html faq.html; then
+            echo "No internal link changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html faq.html
+          git commit -m "AEO: add internal links to buyer questions"
+          git push
