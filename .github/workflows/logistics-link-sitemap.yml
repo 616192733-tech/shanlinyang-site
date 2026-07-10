@@ -1,0 +1,72 @@
+name: Link logistics guide and refresh sitemap
+
+on:
+  push:
+    branches:
+      - agent/seo-conversion-cleanup
+    paths:
+      - '.github/workflows/logistics-link-sitemap.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/seo-conversion-cleanup
+      - name: Link logistics guide and refresh sitemap
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def write_if_changed(path, text):
+              p = Path(path)
+              old = p.read_text(encoding='utf-8') if p.exists() else ''
+              if old != text:
+                  p.write_text(text, encoding='utf-8')
+
+          buyer = Path('buyer-questions.html')
+          text = buyer.read_text(encoding='utf-8')
+          text = text.replace(
+              'Orders can be prepared with barcode labels, polybags, carton marks and delivery planning for Amazon FBA or third-party warehouses.',
+              'Orders can be prepared with barcode labels, polybags, carton marks and delivery planning for Amazon FBA or third-party warehouses. See the <a href="/ddp-shipping-fba-prep.html">DDP shipping and FBA prep guide</a> for packing and delivery details.'
+          )
+          text = text.replace(
+              '<div class="grid-3" style="margin-top:1.5rem">\n  <div class="acard"><h3><a href="/markets/us-clothing-manufacturer.html">US brands</a></h3><p>US sizing, DDP shipping, FBA preparation and warehouse delivery planning.</p></div>\n  <div class="acard"><h3><a href="/markets/canada-clothing-manufacturer.html">Canadian brands</a></h3><p>Canadian sizing, bilingual label planning and cross-border delivery needs.</p></div>\n  <div class="acard"><h3><a href="/markets/europe-clothing-manufacturer.html">European brands</a></h3><p>EU sizing, textile labels, material documentation and multi-country delivery.</p></div>\n</div>',
+              '<div class="grid-4" style="margin-top:1.5rem">\n  <div class="acard"><h3><a href="/markets/us-clothing-manufacturer.html">US brands</a></h3><p>US sizing, DDP shipping, FBA preparation and warehouse delivery planning.</p></div>\n  <div class="acard"><h3><a href="/markets/canada-clothing-manufacturer.html">Canadian brands</a></h3><p>Canadian sizing, bilingual label planning and cross-border delivery needs.</p></div>\n  <div class="acard"><h3><a href="/markets/europe-clothing-manufacturer.html">European brands</a></h3><p>EU sizing, textile labels, material documentation and multi-country delivery.</p></div>\n  <div class="acard"><h3><a href="/ddp-shipping-fba-prep.html">DDP / FBA logistics</a></h3><p>Door-to-door shipping, Amazon FBA prep, carton labels and 3PL warehouse delivery planning.</p></div>\n</div>'
+          )
+          if '<li><a href="/ddp-shipping-fba-prep.html">DDP Shipping &amp; FBA Prep</a></li>' not in text:
+              text = text.replace(
+                  '<li><a href="/sourcing-brief-template.html">Sourcing Brief Template</a></li>',
+                  '<li><a href="/sourcing-brief-template.html">Sourcing Brief Template</a></li><li><a href="/ddp-shipping-fba-prep.html">DDP Shipping &amp; FBA Prep</a></li>',
+                  1
+              )
+          write_if_changed('buyer-questions.html', text)
+
+          sitemap = Path('sitemap.xml')
+          sm = sitemap.read_text(encoding='utf-8')
+          loc = 'https://www.shanlinyang.com/ddp-shipping-fba-prep.html'
+          if loc not in sm:
+              entry = '''  <url>\n    <loc>https://www.shanlinyang.com/ddp-shipping-fba-prep.html</loc>\n    <lastmod>2026-07-10</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n'''
+              sm = sm.replace('</urlset>', entry + '</urlset>')
+              write_if_changed('sitemap.xml', sm)
+
+          workflow = Path('.github/workflows/logistics-link-sitemap.yml')
+          if workflow.exists():
+              workflow.unlink()
+          PY
+      - name: Commit updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add buyer-questions.html sitemap.xml .github/workflows/logistics-link-sitemap.yml
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "SEO: connect logistics guide and sitemap"
+            git push
+          fi
