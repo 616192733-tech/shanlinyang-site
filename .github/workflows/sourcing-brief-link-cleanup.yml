@@ -1,0 +1,77 @@
+name: Link sourcing brief resources
+
+on:
+  push:
+    branches: [agent/seo-conversion-cleanup]
+    paths:
+      - ".github/workflows/sourcing-brief-link-cleanup.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/seo-conversion-cleanup
+      - name: Add sourcing brief links
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def replace_once(path, old, new):
+              p = Path(path)
+              text = p.read_text(encoding='utf-8')
+              if new in text:
+                  return False
+              if old not in text:
+                  raise SystemExit(f'Pattern not found in {path}: {old[:120]}')
+              p.write_text(text.replace(old, new, 1), encoding='utf-8')
+              return True
+
+          changed = False
+          changed |= replace_once(
+              'buyer-questions.html',
+              'Send reference photos or a tech pack, fabric preference, quantity per color, size range, destination country, branding needs, packaging needs and target launch date.',
+              'Send reference photos or a tech pack, fabric preference, quantity per color, size range, destination country, branding needs, packaging needs and target launch date. Use the sourcing brief template at https://www.shanlinyang.com/sourcing-brief-template.html for a faster quote.',
+          )
+          changed |= replace_once(
+              'buyer-questions.html',
+              'Send product references, fabric preference, quantity per color, size range, destination country, branding needs, packaging needs and your target delivery date.',
+              'Send product references, fabric preference, quantity per color, size range, destination country, branding needs, packaging needs and your target delivery date. You can also <a href="/sourcing-brief-template.html">copy our sourcing brief template</a>.',
+          )
+          changed |= replace_once(
+              'buyer-questions.html',
+              '<p style="margin-top:1.5rem"><a class="btn" href="/contact.html?source=buyer_questions">Request a quote</a> <a class="btn btn--ghost" href="/faq.html">Read the full FAQ</a></p>',
+              '<p style="margin-top:1.5rem"><a class="btn" href="/sourcing-brief-template.html">Use the sourcing brief template</a> <a class="btn btn--ghost" href="/contact.html?source=buyer_questions">Request a quote</a></p>',
+          )
+          changed |= replace_once(
+              'buyer-questions.html',
+              '<li><a href="/buyer-questions.html">Buyer Questions</a></li><li><a href="/faq.html">Full FAQ</a></li>',
+              '<li><a href="/buyer-questions.html">Buyer Questions</a></li><li><a href="/sourcing-brief-template.html">Sourcing Brief Template</a></li><li><a href="/faq.html">Full FAQ</a></li>',
+          )
+          changed |= replace_once(
+              'llms.txt',
+              '- [Clothing Manufacturer Buyer Questions](https://www.shanlinyang.com/buyer-questions.html)\n- [Low-MOQ Clothing Manufacturing in China]',
+              '- [Clothing Manufacturer Buyer Questions](https://www.shanlinyang.com/buyer-questions.html)\n- [Sourcing Brief Template](https://www.shanlinyang.com/sourcing-brief-template.html)\n- [Low-MOQ Clothing Manufacturing in China]',
+          )
+          if changed:
+              print('Sourcing brief links added')
+          else:
+              print('Sourcing brief links already present')
+          PY
+      - name: Commit link updates
+        run: |
+          if git diff --quiet -- buyer-questions.html llms.txt; then
+            echo "No link changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add buyer-questions.html llms.txt
+          git commit -m "AEO: link sourcing brief template from buyer resources"
+          git push
