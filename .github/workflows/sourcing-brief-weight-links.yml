@@ -1,0 +1,84 @@
+name: Add sourcing brief weight links
+
+on:
+  push:
+    branches: [agent/seo-conversion-cleanup]
+    paths:
+      - ".github/workflows/sourcing-brief-weight-links.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/seo-conversion-cleanup
+      - name: Add homepage FAQ and contact links
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def replace_once(path, old, new):
+              p = Path(path)
+              text = p.read_text(encoding='utf-8')
+              if new in text:
+                  return False
+              if old not in text:
+                  raise SystemExit(f'Pattern not found in {path}: {old[:160]}')
+              p.write_text(text.replace(old, new, 1), encoding='utf-8')
+              return True
+
+          changed = False
+          changed |= replace_once(
+              'index.html',
+              '<div style="background:#fff;padding:1.2rem;border-radius:6px;text-align:left"><strong style="font-size:.93rem;display:block;margin-bottom:.3rem">❓ Buyer Questions</strong><span style="font-size:.83rem;color:#666"><a href="/buyer-questions.html">MOQ, samples, DDP, FBA and QC answers</a></span></div>\n</div>',
+              '<div style="background:#fff;padding:1.2rem;border-radius:6px;text-align:left"><strong style="font-size:.93rem;display:block;margin-bottom:.3rem">❓ Buyer Questions</strong><span style="font-size:.83rem;color:#666"><a href="/buyer-questions.html">MOQ, samples, DDP, FBA and QC answers</a></span></div>\n<div style="background:#fff;padding:1.2rem;border-radius:6px;text-align:left"><strong style="font-size:.93rem;display:block;margin-bottom:.3rem">📝 Quote Brief</strong><span style="font-size:.83rem;color:#666"><a href="/sourcing-brief-template.html">Copy the sourcing brief template before requesting a quote</a></span></div>\n</div>',
+          )
+          changed |= replace_once(
+              'faq.html',
+              '<li><a href="/buyer-questions.html">Buyer Questions</a></li>\n      </ul>',
+              '<li><a href="/buyer-questions.html">Buyer Questions</a></li>\n            <li><a href="/sourcing-brief-template.html">Sourcing Brief Template</a></li>\n      </ul>',
+          )
+          changed |= replace_once(
+              'faq.html',
+              'Need a short sourcing summary? <a href="/buyer-questions.html">Read the buyer questions page</a>. Can\'t find your answer?',
+              'Need a short sourcing summary? <a href="/buyer-questions.html">Read the buyer questions page</a>. Ready to ask for pricing? <a href="/sourcing-brief-template.html">Copy the sourcing brief template</a>. Can\'t find your answer?',
+          )
+          changed |= replace_once(
+              'faq.html',
+              '<li><a href="/faq.html">FAQ</a></li>\n          <li><a href="/blog/">Sourcing Guides</a></li>',
+              '<li><a href="/faq.html">FAQ</a></li>\n          <li><a href="/buyer-questions.html">Buyer Questions</a></li>\n          <li><a href="/sourcing-brief-template.html">Sourcing Brief Template</a></li>\n          <li><a href="/blog/">Sourcing Guides</a></li>',
+          )
+          changed |= replace_once(
+              'contact.html',
+              'Tell us what you want to make. The more detail you give — style numbers, reference photos, quantities, target market — the more accurate the first quote.',
+              'Tell us what you want to make. The more detail you give — style numbers, reference photos, quantities, target market — the more accurate the first quote. If you are not sure what to send, <a href="/sourcing-brief-template.html">copy our sourcing brief template</a>.',
+          )
+          changed |= replace_once(
+              'contact.html',
+              'Attachments: if you have a tech pack or reference photos, mention it in the message — we\'ll reply by email so you can attach files directly.',
+              'Attachments: if you have a tech pack or reference photos, mention it in the message — we\'ll reply by email so you can attach files directly. For a faster quote, use the <a href="/sourcing-brief-template.html">sourcing brief template</a>.',
+          )
+          changed |= replace_once(
+              'contact.html',
+              '<li><a href="/faq.html">FAQ</a></li>\n          <li><a href="/blog/">Sourcing Guides</a></li>',
+              '<li><a href="/faq.html">FAQ</a></li>\n          <li><a href="/buyer-questions.html">Buyer Questions</a></li>\n          <li><a href="/sourcing-brief-template.html">Sourcing Brief Template</a></li>\n          <li><a href="/blog/">Sourcing Guides</a></li>',
+          )
+          print('Changed' if changed else 'Already linked')
+          PY
+      - name: Commit link updates
+        run: |
+          if git diff --quiet -- index.html faq.html contact.html; then
+            echo "No link changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html faq.html contact.html
+          git commit -m "CRO: strengthen sourcing brief internal links"
+          git push
