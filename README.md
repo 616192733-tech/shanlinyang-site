@@ -25,6 +25,8 @@ Static marketing and product website for [shanlinyang.com](https://www.shanlinya
 5. Merge after the Vercel preview is verified.
 6. Confirm the production deployment is `READY`.
 
+Latest production publish trigger: 2026-07-11 SEO/AEO regional and conversion optimization.
+
 ## SEO Quality Checklist
 
 Before publishing a new page:
