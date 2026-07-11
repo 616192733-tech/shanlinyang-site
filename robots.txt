@@ -26,3 +26,4 @@ Allow: /
 
 Sitemap: https://www.shanlinyang.com/sitemap.xml
 Sitemap: https://www.shanlinyang.com/sitemap-markets.xml
+Sitemap: https://www.shanlinyang.com/sitemap-solutions.xml
