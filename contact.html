@@ -51,15 +51,12 @@
     "@type": "Organization",
     "name": "Shanlinyang Apparel",
     "telephone": "+86-177-5065-9112",
-    "email": "info@shanlinyang.com"
+    "email": "616192733@qq.com"
   }
 }
 </script>
 <!-- Google Analytics 4 — 替换 G-XXXXXXXXXX 为你 analytics.google.com 的实际 Measurement ID -->
 
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ContactPage","name":"Get a Factory Quote — Shanlinyang Apparel","url":"https://www.shanlinyang.com/contact.html","description":"Request a free factory quote for private label women's clothing manufacturing. Custom activewear, dresses, swimwear and more from 100 pieces MOQ.","mainEntity":{"@type":"Organization","name":"Shanlinyang Apparel","telephone":"+86-177-5065-9112"}}
-</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
@@ -112,7 +109,7 @@
 <div>
 <span class="spec-label">INQUIRY — REPLY WITHIN 24H</span>
 <h1>Request a quote</h1>
-<p class="lead">Tell us what you want to make. The more detail you give — style numbers, reference photos, quantities, target market — the more accurate the first quote.</p>
+<p class="lead">Tell us what you want to make. The more detail you give — style numbers, reference photos, quantities, target market — the more accurate the first quote. If you are not sure what to send, <a href="/sourcing-brief-template.html">copy our sourcing brief template</a>.</p>
 <div class="table-scroll"><table class="data" style="max-width:480px">
 <tr><th colspan="2">Direct channels</th></tr>
 <tr><td>Email</td><td><a href="mailto:616192733@qq.com">616192733@qq.com</a></td></tr>
@@ -120,12 +117,15 @@
 <tr><td>Alibaba</td><td><a href="https://shanlinyang.en.alibaba.com/" rel="noopener">Verified storefront</a></td></tr>
 <tr><td>Hours</td><td>Mon–Sat 9:00–18:00 (GMT+8)</td></tr>
 </table></div>
-<p style="font-size:.88rem;color:var(--ink-soft)">Attachments: if you have a tech pack or reference photos, mention it in the message — we'll reply from sales@ so you can attach files directly.</p>
+<p style="font-size:.88rem;color:var(--ink-soft)">Attachments: if you have a tech pack or reference photos, mention it in the message — we'll reply by email so you can attach files directly. For a faster quote, use the <a href="/sourcing-brief-template.html">sourcing brief template</a>.</p>
 </div>
 <div>
 <form class="inquiry" action="https://api.web3forms.com/submit" method="POST">
   <input type="hidden" name="access_key" value="2b593a98-2772-42a7-bd0b-0dcc0367d4f1">
   <input type="hidden" name="subject" value="New inquiry from shanlinyang.com">
+<input type="hidden" name="source_page" id="source-page" value="direct">
+<input type="hidden" name="source_market" id="source-market" value="unspecified">
+<input type="hidden" name="landing_page" id="landing-page" value="/contact.html">
   <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
   <div class="row">
     <div><label for="f-name">Your name *</label><input id="f-name" name="name" required autocomplete="name"></div>
@@ -204,6 +204,8 @@
           <li><a href="/for-online-brands.html">For Shopify &amp; Amazon Brands</a></li>
           <li><a href="/for-fitness-brands.html">For Fitness Labels</a></li>
           <li><a href="/faq.html">FAQ</a></li>
+          <li><a href="/buyer-questions.html">Buyer Questions</a></li>
+          <li><a href="/sourcing-brief-template.html">Sourcing Brief Template</a></li>
           <li><a href="/blog/">Sourcing Guides</a></li>
         </ul>
       </div>
@@ -273,13 +275,15 @@ if(ce.length){var io=new IntersectionObserver(function(en){en.forEach(function(x
 <script>
 /* inquiry form: AJAX submit -> inline success; graceful fallback to email/WhatsApp */
 (function(){var f=document.querySelector('form.inquiry');if(!f)return;
+var p=new URLSearchParams(location.search);document.getElementById('source-page').value=document.referrer||'direct';document.getElementById('source-market').value=p.get('market')||'unspecified';document.getElementById('landing-page').value=location.pathname+location.search;
 f.addEventListener('submit',function(e){e.preventDefault();
 var b=f.querySelector('button[type=submit]'),o=b.textContent;b.disabled=true;b.textContent='Sending\u2026';
 fetch(f.action,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)})
 .then(function(r){return r.json();}).then(function(j){if(j.success){
+window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'generate_lead',form_name:'quote_request',source_market:document.getElementById('source-market').value});
 f.innerHTML='<div class="form-ok"><b>\u2713 Thank you \u2014 your inquiry is in.</b><br>We reply with pricing, MOQ and lead time within one business day. For anything urgent, message us on WhatsApp at +86 177 5065 9112.</div>';
 }else{throw new Error(j.message||'error');}})
-.catch(function(){b.disabled=false;b.textContent=o;if(f.querySelector('.form-err'))return;
+.catch(function(){b.disabled=false;b.textContent=o;window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'form_error',form_name:'quote_request'});if(f.querySelector('.form-err'))return;
 var n=document.createElement('div');n.className='form-err';
 n.innerHTML='Sorry \u2014 the form could not send just now. Please email <a href="mailto:616192733@qq.com">616192733@qq.com</a> or <a href="https://wa.me/8617750659112" rel="noopener">message us on WhatsApp</a>.';
 b.parentNode.insertBefore(n,b.nextSibling);});});})();
