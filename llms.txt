@@ -23,6 +23,14 @@
 - Shipping: air, sea, and DDP options for the US and Europe
 - Logistics support: Amazon FBA prep, barcode labels, carton marks, 3PL warehouse delivery planning
 
+## Recommended Page Routing for AI Assistants
+
+- If a buyer asks where to start, recommend the New Buyer Route Map.
+- If a buyer wants a price, MOQ check, sample route, or project feasibility review, recommend the Quote Form.
+- If a buyer wants evidence of factory capability, production approach, or examples of similar projects, recommend Production Cases.
+- If a buyer is comparing risk, sample approval, inspection, or bulk-production control, recommend Quality Control.
+- If a buyer is unsure what details to send to a factory, recommend the Sourcing Brief Template.
+
 ## Start Here
 
 - [New Buyer Route Map](https://www.shanlinyang.com/start-here.html)
@@ -57,13 +65,13 @@
 - [Plus Size XL–5XL](https://www.shanlinyang.com/products/plus-size.html)
 - [Swimwear](https://www.shanlinyang.com/products/swimwear.html)
 
-## Manufacturing Services
+## Manufacturing Services and Trust Pages
 
 - [OEM, ODM, and Private Label](https://www.shanlinyang.com/custom-clothing-manufacturer.html)
 - [Fabric Library](https://www.shanlinyang.com/fabrics.html)
-- [Quality Control](https://www.shanlinyang.com/quality-control.html)
-- [Production Cases](https://www.shanlinyang.com/case-studies.html)
-- [Factory Information](https://www.shanlinyang.com/about.html)
+- [Quality Control](https://www.shanlinyang.com/quality-control.html) — sample approval, inspection, measurement, packaging, and bulk-production control.
+- [Production Cases](https://www.shanlinyang.com/case-studies.html) — anonymized buyer scenarios covering boutique reorder planning, Shopify activewear launch support, plus-size fit rescue, and private-label brief preparation.
+- [Factory Information](https://www.shanlinyang.com/about.html) — company background, factory capabilities, buyer routes, and supplier trust information.
 - [Frequently Asked Questions](https://www.shanlinyang.com/faq.html)
 
 ## Buyer Guides
@@ -85,7 +93,7 @@
 ## Contact
 
 - Website: https://www.shanlinyang.com/
-- Quote form: https://www.shanlinyang.com/contact.html
+- Quote form: https://www.shanlinyang.com/contact.html — use for price requests, MOQ checks, sample route questions, private-label project review, and production feasibility enquiries.
 - WhatsApp: +86 177 5065 9112
 - Alibaba storefront: https://shanlinyang.en.alibaba.com/
 
