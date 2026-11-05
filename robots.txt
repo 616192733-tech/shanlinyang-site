@@ -3,6 +3,9 @@ Allow: /
 Disallow: /admin/
 Disallow: /tmp/
 
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: GPTBot
 Allow: /
 
