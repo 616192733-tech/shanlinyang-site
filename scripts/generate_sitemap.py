@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://www.shanlinyang.com"
-EXCLUDED_FILES = {"404.html"}
+EXCLUDED_FILES = {"404.html", "thank-you.html"}
 
 
 def git_date(path: Path) -> str:
@@ -42,12 +42,18 @@ for path in sorted(ROOT.rglob("*.html")):
     rel = path.relative_to(ROOT).as_posix()
     if rel in EXCLUDED_FILES:
         continue
-    public_path = "/" if rel == "index.html" else f"/{rel}"
+    if rel == "index.html":
+        public_path = "/"
+    elif rel.endswith("/index.html"):
+        public_path = f"/{rel[:-10]}"
+    else:
+        public_path = f"/{rel}"
     if public_path in redirected:
         continue
     text = path.read_text(encoding="utf-8", errors="replace")
     url = canonical(text)
-    if not url or not url.startswith(f"{SITE}/"):
+    expected_url = f"{SITE}{public_path}"
+    if not url or url != expected_url:
         continue
     if url in entries:
         continue

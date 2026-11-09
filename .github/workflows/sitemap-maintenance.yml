@@ -2,7 +2,7 @@ name: Maintain sitemap
 
 on:
   push:
-    branches: [agent/seo-conversion-cleanup]
+    branches: [main]
     paths:
       - "**/*.html"
       - "vercel.json"
@@ -22,9 +22,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
-          ref: agent/seo-conversion-cleanup
+          ref: main
           fetch-depth: 0
       - name: Generate sitemap
         run: python scripts/generate_sitemap.py
