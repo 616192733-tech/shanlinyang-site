@@ -111,6 +111,11 @@
       "source": "/blog/order-clothing-samples-china-guide.html",
       "destination": "/blog/how-to-order-clothing-samples-from-china.html",
       "permanent": true
+    },
+    {
+      "source": "/blog/clothing-manufacturer-sampling-process.html",
+      "destination": "/blog/how-to-order-clothing-samples-from-china.html",
+      "permanent": true
     }
   ],
   "rewrites": [
